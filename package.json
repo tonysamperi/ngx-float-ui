@@ -7,7 +7,7 @@
   "homepage": "https://tonysamperi.github.io/ngx-float-ui",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tonysamperi/ngx-float-ui"
+    "url": "https://github.com/tonysamperi/ngx-float-ui.git"
   },
   "bugs": {
     "url": "https://github.com/tonysamperi/ngx-float-ui/issues"
