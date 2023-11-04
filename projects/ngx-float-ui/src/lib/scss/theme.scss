@@ -1,0 +1,24 @@
+$dark-theme-bg: #777;
+$dark-theme-txt: white;
+
+$white-theme-bg: white;
+$white-theme-txt: black;
+
+$default-max-width: 250px !default;
+$default-z-index: 999 !default;
+
+@mixin ngx-popperjs-theme($background, $text, $max-width: $default-max-width, $z-index: $default-z-index) {
+
+  div.float-ui-container {
+    background: $background;
+    color: $text;
+    border: 0;
+    max-width: $max-width;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 14px 0 rgba(0, 0, 0, 0.12);
+    z-index: $z-index;
+
+    > .float-ui-arrow {
+      background-color: $background;
+    }
+  }
+}

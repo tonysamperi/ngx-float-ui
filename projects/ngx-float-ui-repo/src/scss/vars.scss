@@ -1,0 +1,30 @@
+$pop-colors: (
+        background: #1f2027,
+        background-grey: rgb(45, 46, 58),
+        violet: #362c4f,
+        primary: rgb(221, 214, 254),
+        primary-light: #ff6b81,
+        accent: #f4e0f1,
+        text: #d2cbe4
+);
+
+$pop-angular-logo-size: 40px;
+
+@mixin pop-scrollbar() {
+	$base: rgba(255, 230, 255, 1);
+	-webkit-scrollbar-color: $base transparent;
+	-moz-scrollbar-color: $base transparent;
+	-ms-scrollbar-color: $base transparent;
+	scrollbar-color: $base transparent;
+
+	&::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 7px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: $base;
+		-webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+	}
+}

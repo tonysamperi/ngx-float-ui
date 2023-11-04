@@ -1,0 +1,25 @@
+<div #floatUiViewRef
+     [attr.id]="id"
+     [class.float-ui-container]="!floatUiOptions.disableDefaultStyling"
+     [class.float-ui-animation]="!floatUiOptions.disableAnimation"
+     [style.display]="displayType"
+     [style.opacity]="opacity"
+     [ngStyle]="floatUiOptions.styles"
+     [ngClass]="extractAppliedClassListExpr(floatUiOptions.applyClass)"
+     attr.aria-hidden="{{ariaHidden}}"
+     [attr.aria-describedby]="floatUiOptions.ariaDescribe || null"
+     attr.role="{{floatUiOptions.ariaRole}}">
+    <div *ngIf="text"
+         class="ngxp__inner"
+         [innerHTML]="text">
+        <ng-content></ng-content>
+    </div>
+    <div *ngIf="!text"
+         class="ngxp__inner">
+        <ng-content></ng-content>
+    </div>
+    <div class="float-ui-arrow"
+         [class.ngxp__force-arrow]="arrowColor"
+         [ngClass]="extractAppliedClassListExpr(floatUiOptions.applyArrowClass)"></div>
+
+</div>
