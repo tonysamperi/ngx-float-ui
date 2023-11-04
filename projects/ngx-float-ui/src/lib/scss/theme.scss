@@ -7,7 +7,7 @@ $white-theme-txt: black;
 $default-max-width: 250px !default;
 $default-z-index: 999 !default;
 
-@mixin ngx-popperjs-theme($background, $text, $max-width: $default-max-width, $z-index: $default-z-index) {
+@mixin ngx-float-ui-theme($background, $text, $max-width: $default-max-width, $z-index: $default-z-index) {
 
   div.float-ui-container {
     background: $background;

@@ -1,15 +1,15 @@
 {
     "name": "ngx-float-ui",
-    "version": "17.0.0-rc.1",
+    "version": "17.0.0",
     "license": "MIT",
-    "description": "ngx-float-ui is an Angular wrapper for @popperjs",
-    "homepage": "https://tonysamperi.github.io/ngx-popperjs",
+    "description": "ngx-float-ui is an Angular wrapper for Floating UI",
+    "homepage": "https://tonysamperi.github.io/ngx-float-ui",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tonysamperi/ngx-popperjs"
+        "url": "https://github.com/tonysamperi/ngx-float-ui"
     },
     "bugs": {
-        "url": "https://github.com/tonysamperi/ngx-popperjs/issues"
+        "url": "https://github.com/tonysamperi/ngx-float-ui/issues"
     },
     "author": {
         "name": "Tony Samperi",

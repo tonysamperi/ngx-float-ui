@@ -68,7 +68,7 @@ export const getNgxFloatUiCodeMap = (positionValue: NgxFloatUiPlacements): NgxFl
      trigger="click"
      [placement]="NgxFloatUiPlacements.${position}"
      class="pop-popcorn-box"&gt;`,
-        theming: `@use ngx-popperjs/css/theme-dark.css
+        theming: `@use ngx-float-ui/css/theme-dark.css
 /* OR */
 @use ngx-float-ui/css/theme-white.css
 /* OR */

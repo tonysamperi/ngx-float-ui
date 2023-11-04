@@ -82,7 +82,7 @@ body {
 
   [pop-theming] {
 
-    @include ngx-popperjs-theme(#777, #fff1e0);
+    @include ngx-float-ui-theme(#777, #fff1e0);
   }
 
   .pop-title-light {
