@@ -134,12 +134,12 @@ body {
         <p class="bold">Pop</p>
         <p class="thin">on the bottom</p>
       </div>
-      <popper-floatUi #tooltipcontent>
+      <float-ui-content #tooltipcontent>
         <div>
           <p>This is a tooltip with text</p>
           <span (click)="tooltipcontent.hide()">Close</span>
         </div>
-      </popper-floatUi>
+      </float-ui-content>
   ```
  
 8. Attributes map:  
