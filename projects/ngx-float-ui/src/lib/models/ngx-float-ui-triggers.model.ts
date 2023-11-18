@@ -1,6 +1,1 @@
-export enum NgxFloatUiTriggers {
-  click = "click",
-  hover = "hover",
-  mousedown = "mousedown",
-  none = "none"
-}
+export type NgxFloatUiTriggers = "click" | "mousedown" | "hover" | "none";
