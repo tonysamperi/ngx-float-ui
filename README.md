@@ -72,7 +72,7 @@ body {
    </float-ui-content>
    <div [floatUi]="popper1Content"
         [showOnStart]="true"
-        [trigger]="'click'"
+        [showTrigger]="'click'"
 		hideOnClickOutside
         [hideOnScroll]="true"
         [placement]="'bottom'">
@@ -84,7 +84,7 @@ body {
 4. As text:
  ```HTML
       <div floatUi="As text"
-           [trigger]="'hover'"
+           [showTrigger]="'hover'"
            [placement]="'bottom'"
            (onShown)="onShown($event)">
         <p class="bold">Pop</p>
@@ -94,7 +94,7 @@ body {
 
   ```HTML
        <div floatUi="{{someTextProperty}}"
-            [trigger]="'hover'"
+            [showTrigger]="'hover'"
             [placement]="'bottom'"
             [styles]="{'background-color: 'blue''}"
             (onShown)="onShown($event)">
@@ -106,7 +106,7 @@ body {
   5. Position fixed, breaking overflow:
    ```HTML
         <div floatUi="As text"
-             [trigger]="'hover'"
+             [showTrigger]="'hover'"
              [placement]="'bottom'"
              [positionFixed]="true"
              (onShown)="onShown($event)">
@@ -118,7 +118,7 @@ body {
  <div class="example">
        <div #popperTargetElement></div>
        <div floatUi="As text"
-            trigger="hover"
+            showTrigger="hover"
             placement="bottom"
             [target]="popperTargetElement.nativeElement"
             (onShown)="onShown($event)">
@@ -128,7 +128,7 @@ body {
 7. hide/show programmatically:
   ```HTML
    <div [floatUi]="tooltipcontent"
-        trigger="hover"
+        showTrigger="hover"
         placement="bottom"
         [applyClass]="'popperSpecialStyle'">
         <p class="bold">Pop</p>
@@ -191,25 +191,25 @@ NgModule({
 });
 ```
   
-   | Options               | Type              | Default   |
-   |:----------------------|:------------------|:----------|
-   | showDelay             | number            | 0         |
-   | disableAnimation      | boolean           | false     |
-   | disableDefaultStyling | boolean           | false     |
-   | placement             | Placement(string) | auto      |
-   | boundariesElement     | string(selector)  | undefined |
-   | trigger               | Trigger(string)   | hover     |
-   | positionFixed         | boolean           | false     |
-   | hideOnClickOutside    | boolean           | true      |
-   | hideOnMouseLeave      | boolean           | false     |
-   | hideOnScroll          | boolean           | false     |
-   | applyClass            | string            | undefined |
-   | styles                | Object            | undefined |
-   | applyArrowClass       | string            | undefined |
-   | ariaDescribeBy        | string            | undefined |
-   | ariaRole              | string            | undefined |
-   | appendTo              | string            | undefined |
-   | preventOverflow       | boolean           | undefined |
+   | Options               | Type                             | Default   |
+   |:----------------------|:---------------------------------|:----------|
+   | showDelay             | number                           | 0         |
+   | disableAnimation      | boolean                          | false     |
+   | disableDefaultStyling | boolean                          | false     |
+   | placement             | NgxFloatUiPopPlacements (string) | auto      |
+   | boundariesElement     | string(selector)                 | undefined |
+   | showTrigger           | NgxFloatUiTriggers (string)      | hover     |
+   | positionFixed         | boolean                          | false     |
+   | hideOnClickOutside    | boolean                          | true      |
+   | hideOnMouseLeave      | boolean                          | false     |
+   | hideOnScroll          | boolean                          | false     |
+   | applyClass            | string                           | undefined |
+   | styles                | Object                           | undefined |
+   | applyArrowClass       | string                           | undefined |
+   | ariaDescribeBy        | string                           | undefined |
+   | ariaRole              | string                           | undefined |
+   | appendTo              | string                           | undefined |
+   | preventOverflow       | boolean                          | undefined |
 
 10. NgxFloatUiPopPlacements:
 
@@ -235,7 +235,12 @@ NgModule({
   | 'mousedown'
   | 'hover'
   | 'none'
-  
+
+### Liking hardcoded strings everywhere? Too lazy to use Enums? No problem mate!
+
+`floatUiLoose` is what you're looking for!
+
+You can then use `loosePlacement` and `looseTrigger` passing the values above as strings!
     
 ### Demo site with sample codes
 <a href="https://tonysamperi.github.io/ngx-float-ui/">Demo of ngx-float-ui</a>
