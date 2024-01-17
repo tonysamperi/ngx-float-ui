@@ -225,9 +225,6 @@ NgModule({
   | 'bottom-end'
   | 'left-end'
   | 'right-end'
-  | 'auto'
-  | 'auto-start'
-  | 'auto-end'
   
 11. NgxFloatUiTriggers:
 
