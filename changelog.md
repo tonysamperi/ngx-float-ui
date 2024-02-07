@@ -7,3 +7,6 @@
 
 #17.0.0
 * First release! 🎉
+
+#16.0.0
+* Release for Angular 16! 🎉
