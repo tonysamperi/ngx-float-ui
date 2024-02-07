@@ -36,22 +36,6 @@ float-ui-content {
     background-color: red;
   }
 
-  &[data-float-ui-placement^='top'] > .float-ui-arrow {
-    bottom: -0.5 * $arrow-size;
-  }
-
-  &[data-float-ui-placement^='bottom'] > .float-ui-arrow {
-    top: -0.5 * $arrow-size;
-  }
-
-  &[data-float-ui-placement^='left'] > .float-ui-arrow {
-    right: -0.5 * $arrow-size;
-  }
-
-  &[data-float-ui-placement^='right'] > .float-ui-arrow {
-    left: -0.5 * $arrow-size;
-  }
-
 }
 
 @-webkit-keyframes ngxp-fadeIn {

@@ -13,6 +13,7 @@ import {
 import {NgStyle, NgClass, NgIf} from "@angular/common";
 //
 import {NgxFloatUiOptions} from "../../models/ngx-float-ui-options.model";
+import {NgxFloatUiPlacements} from "../../models/ngx-float-ui-placements.model";
 import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
 //
 import {
@@ -24,7 +25,9 @@ import {
     shift,
     offset,
     autoPlacement,
-    ComputePositionConfig
+    ComputePositionConfig,
+    Alignment,
+    Placement
 } from "@floating-ui/dom";
 import {fromEvent, Subject, takeUntil} from "rxjs";
 
@@ -41,6 +44,33 @@ import {fromEvent, Subject, takeUntil} from "rxjs";
 export class NgxFloatUiContentComponent implements OnDestroy {
 
     static nextId: number = 0;
+
+    protected get _dynamicArrowSides() {
+        return {
+            top: "left",
+            right: "top",
+            bottom: "left",
+            left: "top"
+        };
+    }
+
+    protected get _sideAxis() {
+        return {
+            left: "x",
+            top: "y",
+            right: "x",
+            bottom: "y"
+        };
+    }
+
+    protected get _staticArrowSides() {
+        return {
+            top: "bottom",
+            right: "left",
+            bottom: "top",
+            left: "right"
+        };
+    }
 
     ariaHidden: string;
     arrowColor: string | null = null;
@@ -175,41 +205,65 @@ export class NgxFloatUiContentComponent implements OnDestroy {
         const arrowLen = arrowElement.offsetWidth;
         // Get half the arrow box's hypotenuse length
         const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
+        const parsedAutoAlignment: Alignment | undefined = (this.floatUiOptions.placement || "")
+            .split("auto-")[1] as Alignment | undefined;
+        const parsedPlacement = this.floatUiOptions.placement.startsWith(NgxFloatUiPlacements.AUTO)
+            ? void 0
+            : (this.floatUiOptions.placement as Placement);
         const popperOptions: Partial<ComputePositionConfig> = {
-            placement: this.floatUiOptions.placement,
+            placement: parsedPlacement,
             strategy: this.floatUiOptions.positionFixed ? "fixed" : "absolute",
             middleware: [
                 offset(floatingOffset),
-                ...(this.floatUiOptions.preventOverflow ? [flip(), shift({limiter: limitShift()})] : [shift({limiter: limitShift()})]),
+                ...(this.floatUiOptions.preventOverflow
+                        ? [flip(), shift({limiter: limitShift()})]
+                        : [shift({limiter: limitShift()})]
+                ),
                 arrow({
                     element: arrowElement,
                     padding: 4
                 })
             ]
         };
+        // Since preventOverflow uses "flip" and "flip" can't be used with "autoPlacement" we get here only if both conditions are falsy
         if (!this.floatUiOptions.preventOverflow && !popperOptions.placement) {
-            const boundariesElement = this.floatUiOptions.boundariesElement && document.querySelector(this.floatUiOptions.boundariesElement);
+            const boundariesElement = this.floatUiOptions.boundariesElement
+                ? document.querySelector(this.floatUiOptions.boundariesElement)
+                : this.referenceObject.parentElement;
             popperOptions.middleware.push(
                 autoPlacement({
+                    crossAxis: !0,
+                    alignment: parsedAutoAlignment,
+                    autoAlignment: this.floatUiOptions.placement === NgxFloatUiPlacements.AUTO,
                     boundary: boundariesElement
                 })
             );
         }
-        computePosition(this.referenceObject, this.floatUiViewRef.nativeElement, popperOptions)
+        computePosition(this.referenceObject, this.floatUiViewRef.nativeElement, {
+            ...popperOptions
+        })
             .then(({middlewareData, x, y, placement}) => {
                 const side = placement.split("-")[0];
                 this.floatUiViewRef.nativeElement.setAttribute("data-float-ui-placement", side);
                 if (middlewareData.arrow) {
-                    const staticSide = {
-                        top: "bottom",
-                        right: "left",
-                        bottom: "top",
-                        left: "right"
-                    }[side];
+                    const staticArrowSide = this._staticArrowSides[side];
+                    const dynamicArrowSide = this._dynamicArrowSides[side];
+                    const dynamicSideAxis = this._sideAxis[dynamicArrowSide];
+                    // console.info("ARROW", {
+                    //     mid: middlewareData.arrow,
+                    //     staticArrowSide,
+                    //     dynamicArrowSide,
+                    //     dynamicSideAxis,
+                    //     dynamicSideValue: middlewareData.arrow[dynamicSideAxis],
+                    //     side
+                    // });
                     Object.assign(arrowElement.style, {
-                        left: middlewareData.arrow.x != null ? `${middlewareData.arrow.x}px` : "",
-                        top: middlewareData.arrow.y != null ? `${middlewareData.arrow.y}px` : "",
-                        [staticSide]: `${-arrowLen / 2}px`
+                        top: "",
+                        bottom: "",
+                        left: "",
+                        right: "",
+                        [dynamicArrowSide]: middlewareData.arrow[dynamicSideAxis] != null ? `${middlewareData.arrow[dynamicSideAxis]}px` : "",
+                        [staticArrowSide]: `${-arrowLen / 2}px`
                     });
                 }
                 Object.assign(this.floatUiViewRef.nativeElement.style, {

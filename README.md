@@ -144,34 +144,36 @@ body {
  
 8. Attributes map:  
   
-    | Option             | Type              | Default   | Description                                                                                              |
-    |:-------------------|:----------------  |:--------- | :------------------------------------------------------------------------------------------------------  |
-    | disableAnimation   | boolean           | false     | Disable the default animation on show/hide                                                               |
-    | disableStyle       | boolean           | false     | Disable the default styling                                                                              |
-    | disabled           | boolean           | false     | Disable the popper, ignore all events                                                                    |
-    | delay              | number            | 0         | Delay time until popper it shown                                                                         |
-    | timeout            | number            | 0         | Set delay before the popper is hidden                                                                    |
-    | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                                          |
-    | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element                                       |
-    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive                            |
-    | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                                             |
-    | showOnStart        | boolean           | false     | Popper default to show                                                                                   |
-    | trigger            | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                                           |
-    | positionFixed      | boolean           | false     | Set the popper element to use position: fixed                                                            |
-    | appendTo           | string            | undefined | append The popper-floatUi element to a given selector, if multiple will apply to first                   |
-    | preventOverflow    | boolean           | undefined | Prevent the popper from being positioned outside the boundary                                            |
-    | hideOnClickOutside | boolean           | true      | Popper will hide on a click outside                                                                      |
-    | hideOnScroll       | boolean           | false     | Popper will hide on scroll                                                                               |
-    | hideOnMouseLeave   | boolean           | false     | Popper will hide on mouse leave                                                                          |
-    | applyClass         | string            | undefined | list of comma separated class to apply on ngpx__container                                                |
-    | styles             | Object            | undefined | Apply the styles object, aligned with ngStyles                                                           |
-    | applyArrowClass    | string            | undefined | list of comma separated class to apply on ngpx__arrow                                                    |
-    | onShown            | EventEmitter<>    | $event    | Event handler when popper is shown                                                                       |
-    | onHidden           | EventEmitter<>    | $event    | Event handler when popper is hidden                                                                      |
-    | onUpdate           | EventEmitter<>    | $event    | Event handler when popper is updated                                                                     |
-    | ariaDescribeBy     | string            | undefined | Define value for aria-describeby attribute                                                               |
-    | ariaRole           | string            | popper    | Define value for aria-role attribute                                                                     |
+    | Option             | Type              | Default   | Description                                                                            |
+    |:-------------------|:----------------  |:--------- |:---------------------------------------------------------------------------------------|
+    | disableAnimation   | boolean           | false     | Disable the default animation on show/hide                                             |
+    | disableStyle       | boolean           | false     | Disable the default styling                                                            |
+    | disabled           | boolean           | false     | Disable the popper, ignore all events                                                  |
+    | delay              | number            | 0         | Delay time until popper it shown                                                       |
+    | timeout            | number            | 0         | Set delay before the popper is hidden                                                  |
+    | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                        |
+    | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element *                   |
+    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
+    | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                           |
+    | showOnStart        | boolean           | false     | Popper default to show                                                                 |
+    | showTrigger        | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                         |
+    | positionFixed      | boolean           | false     | Set the popper element to use position: fixed                                          |
+    | appendTo           | string            | undefined | append The popper-floatUi element to a given selector, if multiple will apply to first |
+    | preventOverflow    | boolean           | undefined | Prevent the popper from being positioned outside the boundary *                        |
+    | hideOnClickOutside | boolean           | true      | Popper will hide on a click outside                                                    |
+    | hideOnScroll       | boolean           | false     | Popper will hide on scroll                                                             |
+    | hideOnMouseLeave   | boolean           | false     | Popper will hide on mouse leave                                                        |
+    | applyClass         | string            | undefined | list of comma separated class to apply on ngpx__container                              |
+    | styles             | Object            | undefined | Apply the styles object, aligned with ngStyles                                         |
+    | applyArrowClass    | string            | undefined | list of comma separated class to apply on ngpx__arrow                                  |
+    | onShown            | EventEmitter<>    | $event    | Event handler when popper is shown                                                     |
+    | onHidden           | EventEmitter<>    | $event    | Event handler when popper is hidden                                                    |
+    | onUpdate           | EventEmitter<>    | $event    | Event handler when popper is updated                                                   |
+    | ariaDescribeBy     | string            | undefined | Define value for aria-describeby attribute                                             |
+    | ariaRole           | string            | popper    | Define value for aria-role attribute                                                   |
 
+\* **VERY IMPORTANT**: All the "auto" placements can't be used in combo with prevent overflow (as per float-ui specs), because the two algorythms **would conflict**, ending in infinite repositioning.
+See [here](https://floating-ui.com/docs/autoPlacement#usage)
 
 9. Override defaults:
 

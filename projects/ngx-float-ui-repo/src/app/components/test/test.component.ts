@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 //
-import {NgxFloatUiContentComponent, NgxFloatUiDirective} from "ngx-float-ui";
+import {NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiPlacements} from "ngx-float-ui";
 
 @Component({
     selector: "app-test",
@@ -11,6 +11,7 @@ import {NgxFloatUiContentComponent, NgxFloatUiDirective} from "ngx-float-ui";
 })
 export class NgxFloatUiTestComponent {
 
+    popperPlacements: typeof NgxFloatUiPlacements = NgxFloatUiPlacements;
     year: number = new Date().getFullYear();
 
 }
