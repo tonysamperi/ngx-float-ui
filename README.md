@@ -72,7 +72,7 @@ body {
    </float-ui-content>
    <div [floatUi]="popper1Content"
         [showOnStart]="true"
-        [trigger]="'click'"
+        [showTrigger]="'click'"
 		hideOnClickOutside
         [hideOnScroll]="true"
         [placement]="'bottom'">
@@ -84,7 +84,7 @@ body {
 4. As text:
  ```HTML
       <div floatUi="As text"
-           [trigger]="'hover'"
+           [showTrigger]="'hover'"
            [placement]="'bottom'"
            (onShown)="onShown($event)">
         <p class="bold">Pop</p>
@@ -94,7 +94,7 @@ body {
 
   ```HTML
        <div floatUi="{{someTextProperty}}"
-            [trigger]="'hover'"
+            [showTrigger]="'hover'"
             [placement]="'bottom'"
             [styles]="{'background-color: 'blue''}"
             (onShown)="onShown($event)">
@@ -106,7 +106,7 @@ body {
   5. Position fixed, breaking overflow:
    ```HTML
         <div floatUi="As text"
-             [trigger]="'hover'"
+             [showTrigger]="'hover'"
              [placement]="'bottom'"
              [positionFixed]="true"
              (onShown)="onShown($event)">
@@ -118,7 +118,7 @@ body {
  <div class="example">
        <div #popperTargetElement></div>
        <div floatUi="As text"
-            trigger="hover"
+            showTrigger="hover"
             placement="bottom"
             [target]="popperTargetElement.nativeElement"
             (onShown)="onShown($event)">
@@ -128,50 +128,52 @@ body {
 7. hide/show programmatically:
   ```HTML
    <div [floatUi]="tooltipcontent"
-        trigger="hover"
+        showTrigger="hover"
         placement="bottom"
         [applyClass]="'popperSpecialStyle'">
         <p class="bold">Pop</p>
         <p class="thin">on the bottom</p>
       </div>
-      <popper-floatUi #tooltipcontent>
+      <float-ui-content #tooltipcontent>
         <div>
           <p>This is a tooltip with text</p>
           <span (click)="tooltipcontent.hide()">Close</span>
         </div>
-      </popper-floatUi>
+      </float-ui-content>
   ```
  
 8. Attributes map:  
   
-    | Option             | Type              | Default   | Description                                                                                              |
-    |:-------------------|:----------------  |:--------- | :------------------------------------------------------------------------------------------------------  |
-    | disableAnimation   | boolean           | false     | Disable the default animation on show/hide                                                               |
-    | disableStyle       | boolean           | false     | Disable the default styling                                                                              |
-    | disabled           | boolean           | false     | Disable the popper, ignore all events                                                                    |
-    | delay              | number            | 0         | Delay time until popper it shown                                                                         |
-    | timeout            | number            | 0         | Set delay before the popper is hidden                                                                    |
-    | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                                          |
-    | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element                                       |
-    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive                            |
-    | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                                             |
-    | showOnStart        | boolean           | false     | Popper default to show                                                                                   |
-    | trigger            | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                                           |
-    | positionFixed      | boolean           | false     | Set the popper element to use position: fixed                                                            |
-    | appendTo           | string            | undefined | append The popper-floatUi element to a given selector, if multiple will apply to first                   |
-    | preventOverflow    | boolean           | undefined | Prevent the popper from being positioned outside the boundary                                            |
-    | hideOnClickOutside | boolean           | true      | Popper will hide on a click outside                                                                      |
-    | hideOnScroll       | boolean           | false     | Popper will hide on scroll                                                                               |
-    | hideOnMouseLeave   | boolean           | false     | Popper will hide on mouse leave                                                                          |
-    | applyClass         | string            | undefined | list of comma separated class to apply on ngpx__container                                                |
-    | styles             | Object            | undefined | Apply the styles object, aligned with ngStyles                                                           |
-    | applyArrowClass    | string            | undefined | list of comma separated class to apply on ngpx__arrow                                                    |
-    | onShown            | EventEmitter<>    | $event    | Event handler when popper is shown                                                                       |
-    | onHidden           | EventEmitter<>    | $event    | Event handler when popper is hidden                                                                      |
-    | onUpdate           | EventEmitter<>    | $event    | Event handler when popper is updated                                                                     |
-    | ariaDescribeBy     | string            | undefined | Define value for aria-describeby attribute                                                               |
-    | ariaRole           | string            | popper    | Define value for aria-role attribute                                                                     |
+    | Option             | Type              | Default   | Description                                                                            |
+    |:-------------------|:----------------  |:--------- |:---------------------------------------------------------------------------------------|
+    | disableAnimation   | boolean           | false     | Disable the default animation on show/hide                                             |
+    | disableStyle       | boolean           | false     | Disable the default styling                                                            |
+    | disabled           | boolean           | false     | Disable the popper, ignore all events                                                  |
+    | delay              | number            | 0         | Delay time until popper it shown                                                       |
+    | timeout            | number            | 0         | Set delay before the popper is hidden                                                  |
+    | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                        |
+    | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element *                   |
+    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
+    | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                           |
+    | showOnStart        | boolean           | false     | Popper default to show                                                                 |
+    | showTrigger        | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                         |
+    | positionFixed      | boolean           | false     | Set the popper element to use position: fixed                                          |
+    | appendTo           | string            | undefined | append The popper-floatUi element to a given selector, if multiple will apply to first |
+    | preventOverflow    | boolean           | undefined | Prevent the popper from being positioned outside the boundary *                        |
+    | hideOnClickOutside | boolean           | true      | Popper will hide on a click outside                                                    |
+    | hideOnScroll       | boolean           | false     | Popper will hide on scroll                                                             |
+    | hideOnMouseLeave   | boolean           | false     | Popper will hide on mouse leave                                                        |
+    | applyClass         | string            | undefined | list of comma separated class to apply on ngpx__container                              |
+    | styles             | Object            | undefined | Apply the styles object, aligned with ngStyles                                         |
+    | applyArrowClass    | string            | undefined | list of comma separated class to apply on ngpx__arrow                                  |
+    | onShown            | EventEmitter<>    | $event    | Event handler when popper is shown                                                     |
+    | onHidden           | EventEmitter<>    | $event    | Event handler when popper is hidden                                                    |
+    | onUpdate           | EventEmitter<>    | $event    | Event handler when popper is updated                                                   |
+    | ariaDescribeBy     | string            | undefined | Define value for aria-describeby attribute                                             |
+    | ariaRole           | string            | popper    | Define value for aria-role attribute                                                   |
 
+\* **VERY IMPORTANT**: All the "auto" placements can't be used in combo with prevent overflow (as per float-ui specs), because the two algorythms **would conflict**, ending in infinite repositioning.
+See [here](https://floating-ui.com/docs/autoPlacement#usage)
 
 9. Override defaults:
 
@@ -191,25 +193,25 @@ NgModule({
 });
 ```
   
-   | Options               | Type              | Default   |
-   |:----------------------|:------------------|:----------|
-   | showDelay             | number            | 0         |
-   | disableAnimation      | boolean           | false     |
-   | disableDefaultStyling | boolean           | false     |
-   | placement             | Placement(string) | auto      |
-   | boundariesElement     | string(selector)  | undefined |
-   | trigger               | Trigger(string)   | hover     |
-   | positionFixed         | boolean           | false     |
-   | hideOnClickOutside    | boolean           | true      |
-   | hideOnMouseLeave      | boolean           | false     |
-   | hideOnScroll          | boolean           | false     |
-   | applyClass            | string            | undefined |
-   | styles                | Object            | undefined |
-   | applyArrowClass       | string            | undefined |
-   | ariaDescribeBy        | string            | undefined |
-   | ariaRole              | string            | undefined |
-   | appendTo              | string            | undefined |
-   | preventOverflow       | boolean           | undefined |
+   | Options               | Type                             | Default   |
+   |:----------------------|:---------------------------------|:----------|
+   | showDelay             | number                           | 0         |
+   | disableAnimation      | boolean                          | false     |
+   | disableDefaultStyling | boolean                          | false     |
+   | placement             | NgxFloatUiPopPlacements (string) | auto      |
+   | boundariesElement     | string(selector)                 | undefined |
+   | showTrigger           | NgxFloatUiTriggers (string)      | hover     |
+   | positionFixed         | boolean                          | false     |
+   | hideOnClickOutside    | boolean                          | true      |
+   | hideOnMouseLeave      | boolean                          | false     |
+   | hideOnScroll          | boolean                          | false     |
+   | applyClass            | string                           | undefined |
+   | styles                | Object                           | undefined |
+   | applyArrowClass       | string                           | undefined |
+   | ariaDescribeBy        | string                           | undefined |
+   | ariaRole              | string                           | undefined |
+   | appendTo              | string                           | undefined |
+   | preventOverflow       | boolean                          | undefined |
 
 10. NgxFloatUiPopPlacements:
 
@@ -235,7 +237,12 @@ NgModule({
   | 'mousedown'
   | 'hover'
   | 'none'
-  
+
+### Liking hardcoded strings everywhere? Too lazy to use Enums? No problem mate!
+
+`floatUiLoose` is what you're looking for!
+
+You can then use `loosePlacement` and `looseTrigger` passing the values above as strings!
     
 ### Demo site with sample codes
 <a href="https://tonysamperi.github.io/ngx-float-ui/">Demo of ngx-float-ui</a>

@@ -1,5 +1,8 @@
 
 export enum NgxFloatUiPlacements {
+  AUTO = "auto",
+  AUTOSTART = "auto-start",
+  AUTOEND = "auto-end",
   TOP = "top",
   BOTTOM = "bottom",
   LEFT = "left",
