@@ -196,18 +196,20 @@ export class NgxFloatUiContentComponent implements OnDestroy {
 
     protected _computePosition(): void {
         const appendToParent = this.floatUiOptions.appendTo && document.querySelector(this.floatUiOptions.appendTo);
-        if (appendToParent && this.elRef.nativeElement.parentNode !== appendToParent) {
-            this.elRef.nativeElement.parentNode && this.elRef.nativeElement.parentNode.removeChild(this.elRef.nativeElement);
-            appendToParent.appendChild(this.elRef.nativeElement);
+        if (appendToParent) {
+            const parent = this.elRef.nativeElement.parentNode;
+            if (parent !== appendToParent) {
+                parent && parent.removeChild(this.elRef.nativeElement);
+                appendToParent.appendChild(this.elRef.nativeElement);
+            }
         }
 
         const arrowElement = this.elRef.nativeElement.querySelector(".float-ui-arrow");
         const arrowLen = arrowElement.offsetWidth;
         // Get half the arrow box's hypotenuse length
         const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
-        const parsedAutoAlignment: Alignment | undefined = (this.floatUiOptions.placement || "")
-            .split("auto-")[1] as Alignment | undefined;
-        const parsedPlacement = this.floatUiOptions.placement.startsWith(NgxFloatUiPlacements.AUTO)
+        const parsedAutoAlignment: Alignment | undefined = (this.floatUiOptions.placement.replace("auto-", "") || void 0) as Alignment | undefined;
+        const parsedPlacement = this.floatUiOptions.placement.indexOf(NgxFloatUiPlacements.AUTO) === 0
             ? void 0
             : (this.floatUiOptions.placement as Placement);
         const popperOptions: Partial<ComputePositionConfig> = {
@@ -216,9 +218,10 @@ export class NgxFloatUiContentComponent implements OnDestroy {
             middleware: [
                 offset(floatingOffset),
                 ...(this.floatUiOptions.preventOverflow
-                        ? [flip(), shift({limiter: limitShift()})]
-                        : [shift({limiter: limitShift()})]
+                        ? [flip()]
+                        : []
                 ),
+                shift({limiter: limitShift()}),
                 arrow({
                     element: arrowElement,
                     padding: 4
@@ -249,14 +252,6 @@ export class NgxFloatUiContentComponent implements OnDestroy {
                     const staticArrowSide = this._staticArrowSides[side];
                     const dynamicArrowSide = this._dynamicArrowSides[side];
                     const dynamicSideAxis = this._sideAxis[dynamicArrowSide];
-                    // console.info("ARROW", {
-                    //     mid: middlewareData.arrow,
-                    //     staticArrowSide,
-                    //     dynamicArrowSide,
-                    //     dynamicSideAxis,
-                    //     dynamicSideValue: middlewareData.arrow[dynamicSideAxis],
-                    //     side
-                    // });
                     Object.assign(arrowElement.style, {
                         top: "",
                         bottom: "",
