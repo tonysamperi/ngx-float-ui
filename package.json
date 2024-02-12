@@ -1,6 +1,6 @@
 {
     "name": "ngx-float-ui-repo",
-    "version": "17.1.0",
+    "version": "17.1.1",
     "build": 0,
     "license": "MIT",
     "description": "ngx-float-ui is an Angular wrapper for @floating-ui",
