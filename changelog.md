@@ -8,5 +8,8 @@
 #17.0.0
 * First release! 🎉
 
+#16.0.1
+* Fix placement default to NgxFloatUiPlacements.AUTO
+
 #16.0.0
 * Release for Angular 16! 🎉

@@ -11,14 +11,14 @@ import {
     Output,
     ViewContainerRef
 } from "@angular/core";
+//
+import {fromEvent, Subject, takeUntil, timer} from "rxjs";
 import {NgxFloatUiContentComponent} from "../../components/ngx-float-ui-content/ngx-float-ui-content.component";
+import {NGX_FLOAT_UI_DEFAULTS} from "../../models/ngx-float-ui-defaults.model";
 import {NgxFloatUiOptions} from "../../models/ngx-float-ui-options.model";
 import {NgxFloatUiPlacements} from "../../models/ngx-float-ui-placements.model";
 import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
-import {NGX_FLOAT_UI_DEFAULTS} from "../../models/ngx-float-ui-defaults.model";
 import {NgxFloatUiUtils} from "../../models/ngx-float-ui-utils.class";
-//
-import {fromEvent, Subject, takeUntil, timer} from "rxjs";
 
 @Directive({
     selector: "[floatUi]",
@@ -118,7 +118,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
 
     @Input()
     set placement(newValue: NgxFloatUiPlacements) {
-        this._placement = newValue;
+        this._placement = newValue || NgxFloatUiPlacements.AUTO;
         this._checkExisting("placement", newValue);
     }
 
