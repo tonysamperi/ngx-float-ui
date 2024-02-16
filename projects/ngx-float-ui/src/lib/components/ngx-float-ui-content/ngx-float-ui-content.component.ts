@@ -1,3 +1,4 @@
+import {NgClass, NgIf, NgStyle} from "@angular/common";
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -10,26 +11,25 @@ import {
     ViewContainerRef,
     ViewEncapsulation
 } from "@angular/core";
-import {NgStyle, NgClass, NgIf} from "@angular/common";
+//
+import {
+    Alignment,
+    arrow,
+    autoPlacement,
+    autoUpdate,
+    computePosition,
+    ComputePositionConfig,
+    flip,
+    limitShift,
+    offset,
+    Placement,
+    shift
+} from "@floating-ui/dom";
+import {fromEvent, Subject, takeUntil} from "rxjs";
 //
 import {NgxFloatUiOptions} from "../../models/ngx-float-ui-options.model";
 import {NgxFloatUiPlacements} from "../../models/ngx-float-ui-placements.model";
 import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
-//
-import {
-    computePosition,
-    autoUpdate,
-    flip,
-    arrow,
-    limitShift,
-    shift,
-    offset,
-    autoPlacement,
-    ComputePositionConfig,
-    Alignment,
-    Placement
-} from "@floating-ui/dom";
-import {fromEvent, Subject, takeUntil} from "rxjs";
 
 @Component({
     selector: "float-ui-content",
@@ -208,8 +208,9 @@ export class NgxFloatUiContentComponent implements OnDestroy {
         const arrowLen = arrowElement.offsetWidth;
         // Get half the arrow box's hypotenuse length
         const floatingOffset = Math.sqrt(2 * arrowLen ** 2) / 2;
-        const parsedAutoAlignment: Alignment | undefined = (this.floatUiOptions.placement.replace("auto-", "") || void 0) as Alignment | undefined;
-        const parsedPlacement = this.floatUiOptions.placement.indexOf(NgxFloatUiPlacements.AUTO) === 0
+        const parsedAutoAlignment: Alignment | undefined = (this.floatUiOptions.placement?.replace("auto-", "") || void 0) as Alignment | undefined;
+        // Since "auto" doesn't really exist in floating-ui we pass undefined to have auto
+        const parsedPlacement = !this.floatUiOptions.placement || this.floatUiOptions.placement.indexOf(NgxFloatUiPlacements.AUTO) === 0
             ? void 0
             : (this.floatUiOptions.placement as Placement);
         const popperOptions: Partial<ComputePositionConfig> = {

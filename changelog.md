@@ -1,3 +1,7 @@
+#17.1.2
+* Fix some nullpointer when placement was not passed (closes [#12](https://github.com/tonysamperi/ngx-float-ui/issues/12) for real)
+* Performance improvement
+
 #17.1.1
 * Fix placement default to NgxFloatUiPlacements.AUTO
 

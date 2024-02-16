@@ -118,7 +118,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
 
     @Input()
     set placement(newValue: NgxFloatUiPlacements) {
-        this._placement = newValue || NgxFloatUiPlacements.AUTO;
+        this._placement = newValue;
         this._checkExisting("placement", newValue);
     }
 
