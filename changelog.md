@@ -15,6 +15,9 @@
 #17.0.0
 * First release! 🎉
 
+#16.0.3
+* Remove development background rule causing graphic bug in certain scenarios
+
 #16.0.2
 * Fix some nullpointer when placement was not passed (closes [#12](https://github.com/tonysamperi/ngx-float-ui/issues/12) for real)
 * Performance improvement
