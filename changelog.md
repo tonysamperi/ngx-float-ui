@@ -27,3 +27,6 @@
 
 #16.0.0
 * Release for Angular 16! 🎉
+
+#15.0.0
+* Release for Angular 15! 🎉

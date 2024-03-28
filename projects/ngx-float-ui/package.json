@@ -1,6 +1,6 @@
 {
     "name": "ngx-float-ui",
-    "version": "16.0.3",
+    "version": "15.0.0",
     "license": "MIT",
     "description": "ngx-float-ui is an Angular wrapper for Floating UI",
     "homepage": "https://tonysamperi.github.io/ngx-float-ui",
@@ -29,8 +29,8 @@
         "@floating-ui/dom": "^1.5.4"
     },
     "peerDependencies": {
-        "@angular/common": "^16.0.0",
-        "@angular/core": "^16.0.0",
+        "@angular/common": "^15.0.0",
+        "@angular/core": "^15.0.0",
         "rxjs": "^7.4.0"
     },
     "exports": {
