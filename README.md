@@ -120,7 +120,7 @@ body {
        <div floatUi="As text"
             showTrigger="hover"
             placement="bottom"
-            [target]="popperTargetElement.nativeElement"
+            [targetElement]="popperTargetElement.nativeElement"
             (onShown)="onShown($event)">
        </div>
   ```
@@ -153,7 +153,7 @@ body {
     | hideTimeout        | number            | 0         | Set delay before the popper is hidden                                                  |
     | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                        |
     | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element *                   |
-    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
+    | targetElement      | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
     | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                           |
     | showOnStart        | boolean           | false     | Popper default to show                                                                 |
     | showTrigger        | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                         |
