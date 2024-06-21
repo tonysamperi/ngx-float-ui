@@ -8,5 +8,5 @@ if (NGX_FLOAT_UI_ENVIRONMENT.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(NgxFloatUiAppModule)
+platformBrowserDynamic().bootstrapModule(NgxFloatUiAppModule, {ngZoneEventCoalescing: true})
     .catch(err => console.error(err));
