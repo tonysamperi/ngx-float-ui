@@ -5,7 +5,7 @@
         "outDir": "./dist/out-tsc",
         "sourceMap": true,
         "declaration": false,
-        "downlevelIteration": true,
+        "esModuleInterop": true,
         "experimentalDecorators": true,
         "module": "esnext",
         "moduleResolution": "node",
@@ -23,8 +23,7 @@
                 "./projects/ngx-float-ui/src/public-api"
             ]
         },
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true
+        "resolveJsonModule": true
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,

@@ -58,12 +58,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-float-ui-repo",
+            "outputPath": {
+              "base": "dist/ngx-float-ui-repo"
+            },
             "index": "projects/ngx-float-ui-repo/src/index.html",
-            "main": "projects/ngx-float-ui-repo/src/main.ts",
-            "polyfills": "projects/ngx-float-ui-repo/src/polyfills.ts",
+            "polyfills": [
+              "projects/ngx-float-ui-repo/src/polyfills.ts"
+            ],
             "tsConfig": "projects/ngx-float-ui-repo/tsconfig.app.json",
             "aot": false,
             "assets": [
@@ -73,7 +76,8 @@
             "styles": [
               "projects/ngx-float-ui-repo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/ngx-float-ui-repo/src/main.ts"
           },
           "configurations": {
             "dev": {
@@ -81,9 +85,7 @@
               "outputHashing": "none",
               "sourceMap": true,
               "namedChunks": false,
-              "extractLicenses": false,
-              "vendorChunk": false,
-              "buildOptimizer": false
+              "extractLicenses": false
             },
             "production": {
               "fileReplacements": [
@@ -98,8 +100,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
