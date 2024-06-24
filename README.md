@@ -120,7 +120,7 @@ body {
        <div floatUi="As text"
             showTrigger="hover"
             placement="bottom"
-            [target]="popperTargetElement.nativeElement"
+            [targetElement]="popperTargetElement.nativeElement"
             (onShown)="onShown($event)">
        </div>
   ```
@@ -149,11 +149,11 @@ body {
     | disableAnimation   | boolean           | false     | Disable the default animation on show/hide                                             |
     | disableStyle       | boolean           | false     | Disable the default styling                                                            |
     | disabled           | boolean           | false     | Disable the popper, ignore all events                                                  |
-    | delay              | number            | 0         | Delay time until popper it shown                                                       |
-    | timeout            | number            | 0         | Set delay before the popper is hidden                                                  |
+    | showDelay          | number            | 0         | Delay time until popper it shown                                                       |
+    | hideTimeout        | number            | 0         | Set delay before the popper is hidden                                                  |
     | timeoutAfterShow   | number            | 0         | Set a time on which the popper will be hidden after it is shown                        |
     | placement          | Placement(string) | auto      | The placement to show the popper relative to the reference element *                   |
-    | target             | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
+    | targetElement      | HtmlElement       | auto      | Specify a different reference element other the the one hosting the directive          |
     | boundaries         | string(selector)  | undefined | Specify a selector to serve as the boundaries of the element                           |
     | showOnStart        | boolean           | false     | Popper default to show                                                                 |
     | showTrigger        | Trigger(string)   | click     | Trigger/Event on which to show/hide the popper                                         |
