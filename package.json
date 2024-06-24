@@ -38,8 +38,8 @@
         "build": "ng build ngx-float-ui --configuration=production && gulp postBuild",
         "build:demo": "ng build ngx-float-ui-repo --configuration=production --base-href=",
         "pack": "gulp pack",
-        "publish": "npm publish ./dist/ngx-float-ui",
-        "publish:beta": "npm publish ./dist/ngx-float-ui --tag beta",
+        "release": "npm publish ./dist/ngx-float-ui",
+        "release:beta": "npm publish ./dist/ngx-float-ui --tag beta",
         "bump:patch": "gulp bump:patch",
         "bump:minor": "gulp bump:minor",
         "bump:major": "gulp bump:major"

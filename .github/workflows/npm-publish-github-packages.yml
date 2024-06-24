@@ -16,16 +16,15 @@ jobs:
                 with:
                     node-version: 20.9.0
                     registry-url: https://registry.npmjs.org/
-            -   run: npm i -g yarn
             -   run: corepack enable
             -   run: yarn install
             -   run: npm run build
             -   run: |
                     pkgversion=$(node -p -e "require('./package.json').version")
                     if [[ $pkgversion == *"beta"* ]]; then
-                        npm run publish:beta
+                        npm run release:beta
                     else
-                        npm publish
+                        npm run release
                     fi
                 env:
                     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
