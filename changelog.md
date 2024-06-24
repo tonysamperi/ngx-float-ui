@@ -1,3 +1,6 @@
+#17.1.4
+* Fix docs on targetElement
+
 #17.1.3
 * Remove development background rule causing graphic bug in certain scenarios (closes [#16](https://github.com/tonysamperi/ngx-float-ui/issues/16))
 

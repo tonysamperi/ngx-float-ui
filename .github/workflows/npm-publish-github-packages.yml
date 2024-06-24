@@ -1,0 +1,31 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Publish on NPM
+
+on:
+    release:
+        types: [ created ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+            -   uses: actions/setup-node@v3
+                with:
+                    node-version: 20.9.0
+                    registry-url: https://registry.npmjs.org/
+            -   run: npm i -g yarn
+            -   run: corepack enable
+            -   run: yarn install
+            -   run: npm run build
+            -   run: |
+                    pkgversion=$(node -p -e "require('./package.json').version")
+                    if [[ $pkgversion == *"beta"* ]]; then
+                        npm run publish:beta
+                    else
+                        npm publish
+                    fi
+                env:
+                    NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
