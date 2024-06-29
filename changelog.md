@@ -1,3 +1,10 @@
+#18.0.1
+* Fix package deps
+* Upgrade to latest floating-ui
+
+#18.0.0
+* Release for Angular 18! 🎉
+
 #17.1.4
 * Fix docs on targetElement
 
