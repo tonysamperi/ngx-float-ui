@@ -21,7 +21,7 @@ jobs:
             -   run: npm run build
             -   run: |
                     pkgversion=$(node -p -e "require('./package.json').version")
-                    if [[ $pkgversion == *"beta"* ]]; then
+                    if [[ $pkgversion == *"beta"*  || $pkgversion =~ -rc\.[0-9]+$ ]]; then
                         npm run release:beta
                     else
                         npm run release

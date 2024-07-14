@@ -1,95 +1,95 @@
 {
-  "name": "ngx-float-ui-repo",
-  "version": "18.0.1",
-  "build": 0,
-  "license": "MIT",
-  "description": "ngx-float-ui is an Angular wrapper for @floating-ui",
-  "homepage": "https://tonysamperi.github.io/ngx-float-ui",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tonysamperi/ngx-float-ui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tonysamperi/ngx-float-ui/issues"
-  },
-  "author": {
-    "name": "Tony Samperi",
-    "email": "github@tonysamperi.it"
-  },
-  "keywords": [
-    "Angular 17+",
-    "ngx-float-ui",
-    "popper Angular",
-    "floating ui",
-    "float",
-    "ui"
-  ],
-  "engines": {
-    "node": ">=18"
-  },
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "test": "ng test ngx-float-ui",
-    "test:ci": "ng test ngx-float-ui --browsers=ChromeHeadless --watch=false",
-    "test:demo": "ng test ngx-float-ui-repo",
-    "lint": "ng lint",
-    "build++": "gulp build++",
-    "build": "ng build ngx-float-ui --configuration=production && gulp postBuild",
-    "build:demo": "ng build ngx-float-ui-repo --configuration=production --base-href=",
-    "pack": "gulp pack",
-    "release": "npm publish ./dist/ngx-float-ui",
-    "release:beta": "npm publish ./dist/ngx-float-ui --tag beta",
-    "bump:patch": "gulp bump:patch",
-    "bump:minor": "gulp bump:minor",
-    "bump:major": "gulp bump:major"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^18.0.0",
-    "@angular/common": "^18.0.0",
-    "@angular/compiler": "^18.0.0",
-    "@angular/core": "^18.0.0",
-    "@angular/forms": "^18.0.0",
-    "@angular/platform-browser": "^18.0.0",
-    "@angular/platform-browser-dynamic": "^18.0.0",
-    "@angular/ssr": "^18.0.0",
-    "@floating-ui/dom": "^1.6.6",
-    "rxjs": "^7.4.0",
-    "tslib": "^2.3.1",
-    "typewriter-effect": "^2.19.0",
-    "zone.js": "^0.14.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.0",
-    "@angular-devkit/build-ng-packagr": "^0.1002.0",
-    "@angular/cli": "^18.0.0",
-    "@angular/compiler-cli": "^18.0.0",
-    "@angular/language-service": "^18.0.0",
-    "@types/jasmine": "^3.3.8",
-    "@types/jasminewd2": "^2.0.3",
-    "@types/node": "^18.13.0",
-    "@types/prismjs": "^1.16.5",
-    "@types/semver": "^7.3.13",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
-    "jasmine-core": "^4.5.0",
-    "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.4.2",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage-istanbul-reporter": "^3.0.3",
-    "karma-jasmine": "^5.1.0",
-    "karma-jasmine-html-reporter": "^2.1.0",
-    "ng-packagr": "^17.0.0-next.2",
-    "plugin-log": "^0.1.0",
-    "prismjs": "^1.29.0",
-    "puppeteer": "^21.0.1",
-    "semver": "^7.6.2",
-    "through2": "^4.0.2",
-    "ts-node": "^10.9.1",
-    "tslint": "^6.1.3",
-    "tslint-consistent-codestyle": "^1.16.0",
-    "typescript": "~5.4.0"
-  },
-  "packageManager": "yarn@4.3.1"
+    "name": "ngx-float-ui-repo",
+    "version": "18.0.1",
+    "build": 0,
+    "license": "MIT",
+    "description": "ngx-float-ui is an Angular wrapper for @floating-ui",
+    "homepage": "https://tonysamperi.github.io/ngx-float-ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tonysamperi/ngx-float-ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/tonysamperi/ngx-float-ui/issues"
+    },
+    "author": {
+        "name": "Tony Samperi",
+        "email": "github@tonysamperi.it"
+    },
+    "keywords": [
+        "Angular 18+",
+        "ngx-float-ui",
+        "popper Angular",
+        "floating ui",
+        "float",
+        "ui"
+    ],
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "test": "ng test ngx-float-ui",
+        "test:ci": "ng test ngx-float-ui --browsers=ChromeHeadless --watch=false",
+        "test:demo": "ng test ngx-float-ui-repo",
+        "lint": "ng lint",
+        "build++": "gulp build++",
+        "build": "ng build ngx-float-ui --configuration=production && gulp postBuild",
+        "build:demo": "ng build ngx-float-ui-repo --configuration=production --base-href=",
+        "pack": "gulp pack",
+        "release": "npm publish ./dist/ngx-float-ui",
+        "release:beta": "npm publish ./dist/ngx-float-ui --tag beta",
+        "bump:patch": "gulp bump:patch",
+        "bump:minor": "gulp bump:minor",
+        "bump:major": "gulp bump:major"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^18.0.0",
+        "@angular/common": "^18.0.0",
+        "@angular/compiler": "^18.0.0",
+        "@angular/core": "^18.0.0",
+        "@angular/forms": "^18.0.0",
+        "@angular/platform-browser": "^18.0.0",
+        "@angular/platform-browser-dynamic": "^18.0.0",
+        "@angular/ssr": "^18.0.0",
+        "@floating-ui/dom": "^1.6.6",
+        "rxjs": "^7.4.0",
+        "tslib": "^2.3.1",
+        "typewriter-effect": "^2.19.0",
+        "zone.js": "^0.14.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "^18.0.0",
+        "@angular-devkit/build-ng-packagr": "^0.1002.0",
+        "@angular/cli": "^18.0.0",
+        "@angular/compiler-cli": "^18.0.0",
+        "@angular/language-service": "^18.0.0",
+        "@types/jasmine": "^3.3.8",
+        "@types/jasminewd2": "^2.0.3",
+        "@types/node": "^18.13.0",
+        "@types/prismjs": "^1.16.5",
+        "@types/semver": "^7.3.13",
+        "gulp": "^4.0.2",
+        "gulp-sass": "^5.1.0",
+        "jasmine-core": "^4.5.0",
+        "jasmine-spec-reporter": "^7.0.0",
+        "karma": "^6.4.2",
+        "karma-chrome-launcher": "^3.2.0",
+        "karma-coverage-istanbul-reporter": "^3.0.3",
+        "karma-jasmine": "^5.1.0",
+        "karma-jasmine-html-reporter": "^2.1.0",
+        "ng-packagr": "^17.0.0-next.2",
+        "plugin-log": "^0.1.0",
+        "prismjs": "^1.29.0",
+        "puppeteer": "^21.0.1",
+        "semver": "^7.6.2",
+        "through2": "^4.0.2",
+        "ts-node": "^10.9.1",
+        "tslint": "^6.1.3",
+        "tslint-consistent-codestyle": "^1.16.0",
+        "typescript": "~5.4.0"
+    },
+    "packageManager": "yarn@4.3.1"
 }
