@@ -1,6 +1,12 @@
 {
   "messages": [
     {
+      "text": "⭐ 14/07/2024: v18 released!",
+      "opts": {
+        "loop": true
+      }
+    },
+    {
       "text": "⚡ 08/11/2023: first release!",
       "opts": {
         "loop": true
