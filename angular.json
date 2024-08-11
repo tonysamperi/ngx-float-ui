@@ -61,7 +61,8 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/ngx-float-ui-repo"
+              "base": "dist/ngx-float-ui-repo",
+              "browser": ""
             },
             "index": "projects/ngx-float-ui-repo/src/index.html",
             "polyfills": [
