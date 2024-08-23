@@ -342,7 +342,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
                     if (!popperContentView ||
                         popperContentView === toElement ||
                         popperContentView.contains(toElement) ||
-                        (this.floatUi && (this.floatUi as NgxFloatUiContentComponent).isMouseOver)) {
+                        this._content?.isMouseOver) {
 
                         return;
                     }
