@@ -331,7 +331,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         if (this.disabled) {
             return;
         }
-        this._scheduledShowTimeoutCtrl$.next();
+        this._scheduledHideTimeoutCtrl$.next();
         timer(delay)
             .pipe(takeUntil(this._scheduledHideTimeoutCtrl$), takeUntil(this._destroy$))
             .subscribe({
