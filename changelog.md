@@ -1,3 +1,7 @@
+#19.0.0
+* Upgrade to latest floating-ui
+* Release for Angular 19! 🎉
+
 #18.0.1
 * Fix package deps
 * Upgrade to latest floating-ui
