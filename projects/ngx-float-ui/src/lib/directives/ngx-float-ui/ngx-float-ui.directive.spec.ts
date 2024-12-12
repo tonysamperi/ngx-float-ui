@@ -72,7 +72,6 @@ import {NgxFloatUiModule, NgxFloatUiDirective, NgxFloatUiPlacements} from "ngx-f
         "../../../../../ngx-float-ui-repo/src/app/components/demo/demo.component.scss"
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone: true,
     imports: [NgxFloatUiModule]
 })
 class NgxFloatUiDirectiveTestComponent {

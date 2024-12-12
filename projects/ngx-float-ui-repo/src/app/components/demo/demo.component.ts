@@ -29,7 +29,6 @@ const codeTypes: NgxFloatUiArticleTypesRef<"css" | "markup"> = {
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"],
-    standalone: true,
     imports: [NgFor, NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiLooseDirective]
 })
 export class NgxFloatUiDemoComponent implements OnInit {

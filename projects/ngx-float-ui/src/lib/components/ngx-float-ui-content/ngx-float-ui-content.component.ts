@@ -38,7 +38,6 @@ import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
     templateUrl: "./ngx-float-ui-content.component.html",
     styleUrls: ["./ngx-float-ui-content.component.scss"],
     exportAs: "ngxFloatUiContent",
-    standalone: true,
     imports: [NgStyle, NgClass, NgIf]
 })
 export class NgxFloatUiContentComponent implements OnDestroy {
