@@ -1,3 +1,6 @@
+#18.0.2
+* Fix in the hide process
+
 #18.0.1
 * Fix package deps
 * Upgrade to latest floating-ui
