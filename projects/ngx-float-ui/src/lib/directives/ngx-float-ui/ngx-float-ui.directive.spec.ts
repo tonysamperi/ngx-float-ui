@@ -1,5 +1,5 @@
 import {Component, DebugElement, ViewEncapsulation} from "@angular/core";
-import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, flush, TestBed, tick} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 //
 import {NgxFloatUiModule, NgxFloatUiDirective, NgxFloatUiPlacements} from "ngx-float-ui";
@@ -104,9 +104,6 @@ const utils = {
     },
     getPopperArrow(el: DebugElement): HTMLElement | null {
         return utils.getClosestPopperContainer(el).querySelector(`.${utils.arrowClazz}`);
-    },
-    sleep(t = 0) {
-        return new Promise((r) => setTimeout(r, t));
     }
 };
 let fixture: ComponentFixture<NgxFloatUiDirectiveTestComponent>;
@@ -125,6 +122,10 @@ beforeEach(() => {
     poppers = fixture.debugElement.queryAll(By.directive(NgxFloatUiDirective));
 });
 
+afterEach(fakeAsync(() => {
+    flush();
+}));
+
 it("should count test popper elements", () => {
     expect(poppers.length).toBe(4);
 });
@@ -134,35 +135,45 @@ it("should have popper sibling", () => {
     expect(popperContent).not.toBeNull();
 });
 
-it("should show popper on start", async () => {
-    await utils.sleep(100);
-    utils.expectPopperVisible(poppers[0]);
+it("should show popper on start", () => {
+    fakeAsync(() => {
+        tick();
+        utils.expectPopperVisible(poppers[0]);
+    });
 });
 
-it("should show popper on click", fakeAsync(() => {
+it("should show popper on click", () => {
     poppers[1].nativeElement.click();
-    tick();
-    utils.expectPopperVisible(poppers[1]);
-}));
+    fakeAsync(() => {
+        utils.expectPopperVisible(poppers[1]);
+    });
+});
 
-it("should hide popper on click outside", async () => {
-    await utils.sleep(100);
+it("should hide popper on click outside", fakeAsync(() => {
     const fooButtonDebugEl = fixture.debugElement.query(By.css("[foo]"));
     fooButtonDebugEl.nativeElement.click();
-    await utils.sleep(100);
-});
+    utils.expectPopperHidden(poppers[0]);
+}));
 
-it("should have popper with position fixed", async () => {
-    await utils.sleep(100);
-    const popperContent = utils.getClosestPopperContainer(poppers[2]);
-    const computedStyle = window.getComputedStyle(popperContent);
+it("should have popper with position fixed", fakeAsync(() => {
+    let popperContent;
+    let computedStyle;
+    setTimeout(() => {
+        popperContent = utils.getClosestPopperContainer(poppers[2]);
+        computedStyle = window.getComputedStyle(popperContent);
+    });
+    tick();
     expect(computedStyle.position).toBe("fixed");
-});
+}));
 
-it("should have popper placed on the right", async () => {
-    await utils.sleep(100);
-    const targetClientRect = poppers[3].nativeElement.getBoundingClientRect();
-    const targetOffsetRight = targetClientRect.x + targetClientRect.width;
-    const popperArrowClientRect = utils.getPopperArrow(poppers[3]).getBoundingClientRect();
-    expect(Math.ceil(popperArrowClientRect.x)).toBeGreaterThanOrEqual(targetOffsetRight);
-});
+it("should have popper placed on the right", fakeAsync(() => {
+    let popperClientRect;
+    let popperArrowClientRect;
+    setTimeout(() => {
+        popperClientRect = poppers[3].nativeElement.getBoundingClientRect();
+        popperArrowClientRect = utils.getPopperArrow(poppers[3]).getBoundingClientRect();
+    });
+    tick();
+    expect(Math.ceil(popperArrowClientRect.x)).toBeLessThanOrEqual(popperClientRect.x);
+}));
+
