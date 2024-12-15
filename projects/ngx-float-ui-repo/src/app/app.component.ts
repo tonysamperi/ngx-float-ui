@@ -7,7 +7,8 @@ import {NGX_FLOAT_UI_ENVIRONMENT} from "../environments/environment";
     selector: "app-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class NgxFloatUiAppComponent {
 

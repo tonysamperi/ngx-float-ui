@@ -23,7 +23,7 @@ import {
     limitShift,
     offset,
     Placement,
-    shift
+    shift,
 } from "@floating-ui/dom";
 import {fromEvent, Subject, takeUntil} from "rxjs";
 //
