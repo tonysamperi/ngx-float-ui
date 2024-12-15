@@ -17,7 +17,7 @@
     "email": "github@tonysamperi.it"
   },
   "keywords": [
-    "Angular 18+",
+    "Angular 19+",
     "ngx-float-ui",
     "popper Angular",
     "floating ui",
@@ -25,7 +25,7 @@
     "ui"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11.1"
   },
   "scripts": {
     "ng": "ng",
@@ -46,26 +46,26 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^19.0.4",
-    "@angular/common": "^19.0.4",
-    "@angular/compiler": "^19.0.4",
-    "@angular/core": "^19.0.4",
-    "@angular/forms": "^19.0.4",
-    "@angular/platform-browser": "^19.0.4",
-    "@angular/platform-browser-dynamic": "^19.0.4",
-    "@angular/ssr": "^19.0.5",
-    "@floating-ui/dom": "^1.6.6",
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/ssr": "^19.0.0",
+    "@floating-ui/dom": "^1.6.12",
     "rxjs": "^7.4.0",
     "tslib": "^2.3.1",
     "typewriter-effect": "^2.19.0",
     "zone.js": "^0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.0.5",
+    "@angular-devkit/build-angular": "^19.0.0",
     "@angular-devkit/build-ng-packagr": "^0.1002.0",
-    "@angular/cli": "^19.0.5",
-    "@angular/compiler-cli": "^19.0.4",
-    "@angular/language-service": "^19.0.4",
+    "@angular/cli": "^19.0.0",
+    "@angular/compiler-cli": "^19.0.0",
+    "@angular/language-service": "^19.0.0",
     "@types/jasmine": "^3.3.8",
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^18.13.0",
@@ -73,9 +73,9 @@
     "@types/semver": "^7.3.13",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.1.0",
-    "jasmine-core": "^4.5.0",
+    "jasmine-core": "^4.6.1",
     "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.4.2",
+    "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
     "karma-jasmine": "^5.1.0",
@@ -83,7 +83,7 @@
     "ng-packagr": "^19.0.1",
     "plugin-log": "^0.1.0",
     "prismjs": "^1.29.0",
-    "puppeteer": "^21.0.1",
+    "puppeteer": "^21.11.0",
     "semver": "^7.6.2",
     "through2": "^4.0.2",
     "ts-node": "^10.9.1",

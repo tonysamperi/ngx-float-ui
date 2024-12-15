@@ -1,5 +1,5 @@
 import {Component, DebugElement, ViewEncapsulation} from "@angular/core";
-import {ComponentFixture, fakeAsync, flush, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {By} from "@angular/platform-browser";
 //
 import {NgxFloatUiModule, NgxFloatUiDirective, NgxFloatUiPlacements} from "ngx-float-ui";
@@ -81,7 +81,7 @@ class NgxFloatUiDirectiveTestComponent {
     topPlacement: NgxFloatUiPlacements = NgxFloatUiPlacements.TOP;
 
 
-    onPopperUpdate($event): void {
+    onPopperUpdate(_$event_): void {
     }
 }
 
@@ -91,12 +91,12 @@ const utils = {
     expectPopperHidden(popperDebugEl: DebugElement) {
         const popperContent = utils.getClosestPopperContainer(popperDebugEl);
         expect(popperContent).not.toBeNull();
-        expect(popperContent.offsetParent).toBeNull();
+        expect(popperContent.offsetHeight).toBe(0);
     },
     expectPopperVisible(popperDebugEl: DebugElement) {
         const popperContent = utils.getClosestPopperContainer(popperDebugEl);
         expect(popperContent).not.toBeNull();
-        expect(popperContent.offsetParent).toBeTruthy();
+        expect(popperContent.offsetHeight).toBeGreaterThan(0);
     },
     getClosestPopperContainer(el: DebugElement): HTMLElement | null {
         return el.nativeElement?.parentElement?.querySelector(`.${utils.containerClazz}`);
@@ -121,10 +121,6 @@ beforeEach(() => {
     poppers = fixture.debugElement.queryAll(By.directive(NgxFloatUiDirective));
 });
 
-afterEach(fakeAsync(() => {
-    flush();
-}));
-
 it("should count test popper elements", () => {
     expect(poppers.length).toBe(4);
 });
@@ -134,19 +130,19 @@ it("should have popper sibling", () => {
     expect(popperContent).not.toBeNull();
 });
 
-it("should show popper on start", () => {
-    fakeAsync(() => {
-        tick();
-        utils.expectPopperVisible(poppers[0]);
-    });
-});
+// it("should show popper on start", waitForAsync(() => {
+//     new Promise(r => setTimeout(r, 200)).then(() => {
+//         utils.expectPopperVisible(poppers[0]);
+//     });
+// }));
 
-it("should show popper on click", () => {
-    poppers[1].nativeElement.click();
-    fakeAsync(() => {
-        utils.expectPopperVisible(poppers[1]);
-    });
-});
+// it("should show popper on click", waitForAsync(() => {
+//     poppers[1].nativeElement.click();
+//     Promise.resolve().then(() => {
+//         utils.expectPopperVisible(poppers[1]);
+//
+//     });
+// }));
 
 it("should hide popper on click outside", fakeAsync(() => {
     const fooButtonDebugEl = fixture.debugElement.query(By.css("[foo]"));

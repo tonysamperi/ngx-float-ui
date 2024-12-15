@@ -11,8 +11,8 @@ import {
     Output,
     ViewContainerRef
 } from "@angular/core";
-//
 import {fromEvent, Subject, takeUntil, timer} from "rxjs";
+//
 import {NgxFloatUiContentComponent} from "../../components/ngx-float-ui-content/ngx-float-ui-content.component";
 import {NGX_FLOAT_UI_DEFAULTS} from "../../models/ngx-float-ui-defaults.model";
 import {NgxFloatUiOptions} from "../../models/ngx-float-ui-options.model";

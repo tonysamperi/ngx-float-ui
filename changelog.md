@@ -1,3 +1,6 @@
+#19.0.0
+* Release for Angular 19! 🎉
+
 #18.0.2
 * Fix in the hide process
 

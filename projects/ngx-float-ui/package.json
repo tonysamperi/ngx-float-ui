@@ -16,21 +16,21 @@
         "email": "github@tonysamperi.it"
     },
     "keywords": [
-        "Angular 8+",
+        "Angular 19+",
         "ngx-float-ui",
         "floating-ui Angular",
-        "Angular 18",
+        "Angular 19",
         "floating-ui"
     ],
     "scripts": {
         "postinstall": "node ./tsbl.js"
     },
     "dependencies": {
-        "@floating-ui/dom": "^1.6.6"
+        "@floating-ui/dom": "^1.6.12"
     },
     "peerDependencies": {
-        "@angular/common": "^18.0.0",
-        "@angular/core": "^18.0.0",
+        "@angular/common": "^19.0.0",
+        "@angular/core": "^19.0.0",
         "rxjs": "^7.4.0"
     },
     "exports": {
