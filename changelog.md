@@ -1,3 +1,6 @@
+#19.0.1
+* Jetbrains no longer supporting :(
+
 #19.0.0
 * Release for Angular 19! 🎉
 
