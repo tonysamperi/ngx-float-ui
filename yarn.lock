@@ -2033,58 +2033,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fimbul/bifrost@npm:^0.21.0":
-  version: 0.21.0
-  resolution: "@fimbul/bifrost@npm:0.21.0"
+"@floating-ui/core@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "@floating-ui/core@npm:1.7.1"
   dependencies:
-    "@fimbul/ymir": "npm:^0.21.0"
-    get-caller-file: "npm:^2.0.0"
-    tslib: "npm:^1.8.1"
-    tsutils: "npm:^3.5.0"
-  peerDependencies:
-    tslint: ^5.0.0
-    typescript: ">= 3.3.0 || >= 3.6.0-dev || >= 3.7.0-dev"
-  checksum: 10c0/31f5f7583afd1f59df994e570958cdc754774c32dd8ade4802b0708c7fe0bb8b5ccb7df4c3110e5732b0d5eeaea6f3331a1da4eb938a47afb55170ed37edb4b4
+    "@floating-ui/utils": "npm:^0.2.9"
+  checksum: 10c0/40df1e1dd8a2bad6f70c1ee163f0e151c456f52b9b98a38488d88720b2be72ccd631501a66f8369f96d2e8ad1c4250936b6fd4243e3a99833f2d008ee6afec18
   languageName: node
   linkType: hard
 
-"@fimbul/ymir@npm:^0.21.0":
-  version: 0.21.0
-  resolution: "@fimbul/ymir@npm:0.21.0"
+"@floating-ui/dom@npm:^1.6.13":
+  version: 1.7.1
+  resolution: "@floating-ui/dom@npm:1.7.1"
   dependencies:
-    inversify: "npm:^5.0.0"
-    reflect-metadata: "npm:^0.1.12"
-    tslib: "npm:^1.8.1"
-  peerDependencies:
-    tsutils: ">=2.29.0"
-    typescript: ">= 3.3.0 || >= 3.6.0-dev || >= 3.7.0-dev"
-  checksum: 10c0/adb45b51d98bac665609e38938cb1e0e2887a9e9b72ccc2165940f6527574120d1dd4ad32c3cb55618e233aad078a32541a7058703197abf828661065162158a
+    "@floating-ui/core": "npm:^1.7.1"
+    "@floating-ui/utils": "npm:^0.2.9"
+  checksum: 10c0/33b0e892f4c50ce568169cd58793ff5e3bc1e72ee007237d73b9458d4475e1e5f5a4b3f9e6752422d5f5ac902bc0c135ca7dc0a23c6df187fd9d28dc34cdceed
   languageName: node
   linkType: hard
 
-"@floating-ui/core@npm:^1.6.0":
-  version: 1.6.8
-  resolution: "@floating-ui/core@npm:1.6.8"
-  dependencies:
-    "@floating-ui/utils": "npm:^0.2.8"
-  checksum: 10c0/d6985462aeccae7b55a2d3f40571551c8c42bf820ae0a477fc40ef462e33edc4f3f5b7f11b100de77c9b58ecb581670c5c3f46d0af82b5e30aa185c735257eb9
-  languageName: node
-  linkType: hard
-
-"@floating-ui/dom@npm:^1.6.12":
-  version: 1.6.12
-  resolution: "@floating-ui/dom@npm:1.6.12"
-  dependencies:
-    "@floating-ui/core": "npm:^1.6.0"
-    "@floating-ui/utils": "npm:^0.2.8"
-  checksum: 10c0/c67b39862175b175c6ac299ea970f17a22c7482cfdf3b1bc79313407bf0880188b022b878953fa69d3ce166ff2bd9ae57c86043e5dd800c262b470d877591b7d
-  languageName: node
-  linkType: hard
-
-"@floating-ui/utils@npm:^0.2.8":
-  version: 0.2.8
-  resolution: "@floating-ui/utils@npm:0.2.8"
-  checksum: 10c0/a8cee5f17406c900e1c3ef63e3ca89b35e7a2ed645418459a73627b93b7377477fc888081011c6cd177cac45ec2b92a6cab018c14ea140519465498dddd2d3f9
+"@floating-ui/utils@npm:^0.2.9":
+  version: 0.2.9
+  resolution: "@floating-ui/utils@npm:0.2.9"
+  checksum: 10c0/48bbed10f91cb7863a796cc0d0e917c78d11aeb89f98d03fc38d79e7eb792224a79f538ed8a2d5d5584511d4ca6354ef35f1712659fd569868e342df4398ad6f
   languageName: node
   linkType: hard
 
@@ -7128,7 +7099,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-caller-file@npm:^2.0.0, get-caller-file@npm:^2.0.5":
+"get-caller-file@npm:^2.0.5":
   version: 2.0.5
   resolution: "get-caller-file@npm:2.0.5"
   checksum: 10c0/c6c7b60271931fa752aeb92f2b47e355eac1af3a2673f47c9589e8f8a41adc74d45551c1bc57b5e66a80609f10ffb72b6f575e4370d61cc3f7f3aaff01757cde
@@ -7823,13 +7794,6 @@ __metadata:
   version: 1.4.0
   resolution: "interpret@npm:1.4.0"
   checksum: 10c0/08c5ad30032edeec638485bc3f6db7d0094d9b3e85e0f950866600af3c52e9fd69715416d29564731c479d9f4d43ff3e4d302a178196bdc0e6837ec147640450
-  languageName: node
-  linkType: hard
-
-"inversify@npm:^5.0.0":
-  version: 5.1.1
-  resolution: "inversify@npm:5.1.1"
-  checksum: 10c0/0c061ab6e8526ffd40c63301ab12267f0f208fce3bac384fdf97c7d8ea0c0896e1358c1a2419ad202395244625d10cb90a254b25735a969574f19a2666d1ca00
   languageName: node
   linkType: hard
 
@@ -9679,7 +9643,7 @@ __metadata:
     "@angular/platform-browser": "npm:^20.0.2"
     "@angular/platform-browser-dynamic": "npm:^20.0.2"
     "@angular/ssr": "npm:^20.0.1"
-    "@floating-ui/dom": "npm:^1.6.12"
+    "@floating-ui/dom": "npm:^1.6.13"
     "@types/jasmine": "npm:^3.3.8"
     "@types/jasminewd2": "npm:^2.0.3"
     "@types/node": "npm:^18.13.0"
@@ -9696,7 +9660,7 @@ __metadata:
     karma-jasmine-html-reporter: "npm:^2.1.0"
     ng-packagr: "npm:^20.0.0"
     plugin-log: "npm:^0.1.0"
-    prismjs: "npm:^1.29.0"
+    prismjs: "npm:^1.30.0"
     puppeteer: "npm:^21.11.0"
     rxjs: "npm:^7.4.0"
     semver: "npm:^7.6.2"
@@ -9704,7 +9668,6 @@ __metadata:
     ts-node: "npm:^10.9.1"
     tslib: "npm:^2.3.1"
     tslint: "npm:^6.1.3"
-    tslint-consistent-codestyle: "npm:^1.16.0"
     typescript: "npm:~5.8.3"
     typewriter-effect: "npm:^2.19.0"
     zone.js: "npm:^0.15.0"
@@ -10700,10 +10663,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prismjs@npm:^1.29.0":
-  version: 1.29.0
-  resolution: "prismjs@npm:1.29.0"
-  checksum: 10c0/d906c4c4d01b446db549b4f57f72d5d7e6ccaca04ecc670fb85cea4d4b1acc1283e945a9cbc3d81819084a699b382f970e02f9d1378e14af9808d366d9ed7ec6
+"prismjs@npm:^1.30.0":
+  version: 1.30.0
+  resolution: "prismjs@npm:1.30.0"
+  checksum: 10c0/f56205bfd58ef71ccfcbcb691fd0eb84adc96c6ff21b0b69fc6fdcf02be42d6ef972ba4aed60466310de3d67733f6a746f89f2fb79c00bf217406d465b3e8f23
   languageName: node
   linkType: hard
 
@@ -11032,13 +10995,6 @@ __metadata:
     indent-string: "npm:^2.1.0"
     strip-indent: "npm:^1.0.1"
   checksum: 10c0/9fa48d250d4e645acac9de57cb82dc29cd7f5f27257ec367461e3dd0c9f14c55f1c40fd3d9cf7f9a3ed337f209ad4e0370abfcf5cf75569ebd31c97a7949b8a2
-  languageName: node
-  linkType: hard
-
-"reflect-metadata@npm:^0.1.12":
-  version: 0.1.14
-  resolution: "reflect-metadata@npm:0.1.14"
-  checksum: 10c0/3a6190c7f6cb224f26a012d11f9e329360c01c1945e2cbefea23976a8bacf9db6b794aeb5bf18adcb673c448a234fbc06fc41853c00a6c206b30f0777ecf019e
   languageName: node
   linkType: hard
 
@@ -12964,24 +12920,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.13.0, tslib@npm:^1.7.1, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
+"tslib@npm:^1.13.0, tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: 10c0/69ae09c49eea644bc5ebe1bca4fa4cc2c82b7b3e02f43b84bd891504edf66dbc6b2ec0eef31a957042de2269139e4acff911e6d186a258fb14069cd7f6febce2
-  languageName: node
-  linkType: hard
-
-"tslint-consistent-codestyle@npm:^1.16.0":
-  version: 1.16.0
-  resolution: "tslint-consistent-codestyle@npm:1.16.0"
-  dependencies:
-    "@fimbul/bifrost": "npm:^0.21.0"
-    tslib: "npm:^1.7.1"
-    tsutils: "npm:^2.29.0"
-  peerDependencies:
-    tslint: ^5.0.0
-    typescript: ">=2.1.4 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >=3.1.0-dev || >=3.2.0-dev || >=3.3.0-dev || >=3.4.0-dev"
-  checksum: 10c0/7e3f70f1d07a58aae1032a6fb7c758d06da09b68d40b3818407e150f5407528af716ebec57d5f9568756d52df896c007ad0e7e74c557534bf1a5a2bc9ebc8d93
   languageName: node
   linkType: hard
 
@@ -13018,17 +12960,6 @@ __metadata:
   peerDependencies:
     typescript: ">=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev"
   checksum: 10c0/e37794513526dbf1cf960414d0a65b956ad319dbc93171bccfe08e3fece1eea35b4e130153f41d917a0f28ecac04f3ca78e9a99c4bddc64a5f225925abc0cf14
-  languageName: node
-  linkType: hard
-
-"tsutils@npm:^3.5.0":
-  version: 3.21.0
-  resolution: "tsutils@npm:3.21.0"
-  dependencies:
-    tslib: "npm:^1.8.1"
-  peerDependencies:
-    typescript: ">=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta"
-  checksum: 10c0/02f19e458ec78ead8fffbf711f834ad8ecd2cc6ade4ec0320790713dccc0a412b99e7fd907c4cda2a1dc602c75db6f12e0108e87a5afad4b2f9e90a24cabd5a2
   languageName: node
   linkType: hard
 
