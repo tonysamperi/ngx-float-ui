@@ -83,7 +83,7 @@
         "ng-packagr": "^20.0.0",
         "plugin-log": "^0.1.0",
         "prismjs": "^1.30.0",
-        "puppeteer": "^21.11.0",
+        "puppeteer": "^24.10.0",
         "semver": "^7.6.2",
         "through2": "^4.0.2",
         "ts-node": "^10.9.1",

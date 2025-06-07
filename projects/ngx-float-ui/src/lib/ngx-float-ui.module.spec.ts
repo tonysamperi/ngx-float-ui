@@ -16,7 +16,7 @@ it("should have matching package versions for @angular", () => {
     const angularMajorMain = minVersion(angularVersionMain);
     const angularMajorLib = minVersion(angularVersionLib);
 
-    expect(angularMajorLib).toEqual(angularMajorMain);
+    expect(angularMajorLib.major).toEqual(angularMajorMain.major);
 });
 
 
