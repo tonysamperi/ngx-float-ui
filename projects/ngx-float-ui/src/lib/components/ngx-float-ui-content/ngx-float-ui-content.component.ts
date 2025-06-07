@@ -1,4 +1,4 @@
-import {NgClass, NgIf, NgStyle} from "@angular/common";
+import { NgClass, NgStyle } from "@angular/common";
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -39,7 +39,7 @@ import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
     styleUrls: ["./ngx-float-ui-content.component.scss"],
     exportAs: "ngxFloatUiContent",
     standalone: true,
-    imports: [NgStyle, NgClass, NgIf]
+    imports: [NgStyle, NgClass]
 })
 export class NgxFloatUiContentComponent implements OnDestroy {
 

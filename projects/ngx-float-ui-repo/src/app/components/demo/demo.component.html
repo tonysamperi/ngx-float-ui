@@ -294,7 +294,9 @@
 					<li>npm i ngx-float-ui</li>
 				</ul>
 				<ul pop-messages>
-					<li *ngFor="let m of messages"></li>
+					@for (m of messages; track m) {
+						<li></li>
+					}
 				</ul>
 			</div>
 		</div>
@@ -302,13 +304,15 @@
 	<div class="pop-demo">
 		<article pop-position>
 			<div class="pop-popcorn-wrap">
-				<button *ngFor="let positionButton of positionButtons"
-						(click)="updatePosition(positionButton)"
-						[attr.data-placement]="positionButton"
-						[attr.aria-label]="positionButton"
-						class="pop-demo-placement-button">
-					<div [class.selected]="selectedPosition === positionButton"></div>
-				</button>
+				@for (positionButton of positionButtons; track positionButton) {
+					<button
+							(click)="updatePosition(positionButton)"
+							[attr.data-placement]="positionButton"
+							[attr.aria-label]="positionButton"
+							class="pop-demo-placement-button">
+						<div [class.selected]="selectedPosition === positionButton"></div>
+					</button>
+				}
 				<float-ui-content #myPopperContent><p class="pop-lucky-font">Popcorn</p></float-ui-content>
 				<img alt="Popcorn box"
 					 src="assets/images/popcorn-box.svg"
@@ -712,5 +716,5 @@
 															target="_blank">Tony
 		Samperi</a>
 	</p>
-	<p>© {{year}} MIT License</p>
+	<p>© {{ year }} MIT License</p>
 </footer>

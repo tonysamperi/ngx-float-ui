@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {NgFor} from "@angular/common";
+
 import {
     NgxFloatUiPlacements,
     NgxFloatUiLooseDirective,
@@ -29,7 +29,7 @@ const codeTypes: NgxFloatUiArticleTypesRef<"css" | "markup"> = {
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"],
-    imports: [NgFor, NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiLooseDirective]
+    imports: [NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiLooseDirective]
 })
 export class NgxFloatUiDemoComponent implements OnInit {
 
