@@ -1,29 +1,29 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
-        "sourceMap": true,
-        "declaration": false,
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "importHelpers": true,
-        "target": "ES2022",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2018",
-            "dom"
-        ],
-        "paths": {
-            "ngx-float-ui": [
-                "./projects/ngx-float-ui/src/public-api"
-            ]
-        },
-        "resolveJsonModule": true
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "module": "esnext",
+      "moduleResolution": "bundler",
+      "importHelpers": true,
+      "target": "ES2022",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "lib": [
+        "es2018",
+        "dom"
+      ],
+      "paths": {
+        "ngx-float-ui": [
+          "./projects/ngx-float-ui/src/public-api"
+        ]
+      },
+      "resolveJsonModule": true
     },
     "angularCompilerOptions": {
         "fullTemplateTypeCheck": true,
