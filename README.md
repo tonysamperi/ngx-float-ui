@@ -81,7 +81,23 @@ body {
    </div>
   ```
 
-4. As text:
+4. As `TemplateRef`:
+  ```HTML  
+   <ng-template #popper2Content>
+       <p class="bold">Popper on bottom</p>
+   </ng-template>
+   <div [floatUi]="popper2Content"
+        [showOnStart]="true"
+        [showTrigger]="'click'"
+        hideOnClickOutside
+        [hideOnScroll]="true"
+        [placement]="'bottom'">
+       <p class="bold">Hey!</p>
+       <p class="thin">Choose where to put your popper!</p>
+   </div>
+  ```
+
+5. As text:
  ```HTML
       <div floatUi="As text"
            [showTrigger]="'hover'"
@@ -102,8 +118,8 @@ body {
          <p class="thin">on the bottom</p>
        </div>
   ```
- 
-  5. Position fixed, breaking overflow:
+
+6. Position fixed, breaking overflow:
    ```HTML
         <div floatUi="As text"
              [showTrigger]="'hover'"
@@ -113,7 +129,7 @@ body {
         </div>
    ```
  
- 6. Specific target:
+7. Specific target:
   ```HTML
  <div class="example">
        <div #popperTargetElement></div>
@@ -125,7 +141,7 @@ body {
        </div>
   ```
   
-7. hide/show programmatically:
+8. hide/show programmatically:
   ```HTML
    <div [floatUi]="tooltipcontent"
         showTrigger="hover"
@@ -142,7 +158,7 @@ body {
       </float-ui-content>
   ```
  
-8. Attributes map:  
+9. Attributes map:  
   
     | Option             | Type              | Default   | Description                                                                            |
     |:-------------------|:----------------  |:--------- |:---------------------------------------------------------------------------------------|
@@ -175,7 +191,7 @@ body {
 \* **VERY IMPORTANT**: All the "auto" placements can't be used in combo with prevent overflow (as per float-ui specs), because the two algorythms **would conflict**, ending in infinite repositioning.
 See [here](https://floating-ui.com/docs/autoPlacement#usage)
 
-9. Override defaults:
+10. Override defaults:
 
     ngx-float-ui comes with a few default properties you can override in default to effect all instances
     These are overridden by any child attributes.
@@ -213,7 +229,7 @@ NgModule({
    | appendTo              | string                           | undefined |
    | preventOverflow       | boolean                          | undefined |
 
-10. NgxFloatUiPopPlacements:
+11. NgxFloatUiPopPlacements:
 
   | 'top'
   | 'bottom'
@@ -231,7 +247,7 @@ NgModule({
   | 'auto-start'
   | 'auto-end'
   
-11. NgxFloatUiTriggers:
+12. NgxFloatUiTriggers:
 
   | 'click'
   | 'mousedown'

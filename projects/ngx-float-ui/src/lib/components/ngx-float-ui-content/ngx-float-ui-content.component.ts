@@ -1,15 +1,16 @@
-import { NgClass, NgStyle } from "@angular/common";
+import { NgClass, NgStyle, NgTemplateOutlet } from "@angular/common";
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    OnDestroy,
-    ViewChild,
-    ViewContainerRef,
-    ViewEncapsulation
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  OnDestroy,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+  ViewEncapsulation
 } from "@angular/core";
 //
 import {
@@ -39,7 +40,7 @@ import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
     styleUrls: ["./ngx-float-ui-content.component.scss"],
     exportAs: "ngxFloatUiContent",
     standalone: true,
-    imports: [NgStyle, NgClass]
+  imports: [NgStyle, NgClass, NgTemplateOutlet]
 })
 export class NgxFloatUiContentComponent implements OnDestroy {
 
@@ -94,6 +95,7 @@ export class NgxFloatUiContentComponent implements OnDestroy {
     referenceObject: HTMLElement;
     state: boolean;
     text: string;
+    template: TemplateRef<unknown>;
 
     protected _destroy$: Subject<void> = new Subject<void>();
     protected _resizeCtrl$: Subject<void> = new Subject<void>();

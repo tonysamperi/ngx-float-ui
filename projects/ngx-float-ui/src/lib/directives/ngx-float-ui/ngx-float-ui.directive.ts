@@ -1,15 +1,16 @@
 import {
-    ChangeDetectorRef,
-    ComponentRef,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    Inject,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewContainerRef
+  ChangeDetectorRef,
+  ComponentRef,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewContainerRef
 } from "@angular/core";
 import {fromEvent, Subject, takeUntil, timer} from "rxjs";
 //
@@ -87,7 +88,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     }
 
     @Input()
-    set floatUi(newValue: string | NgxFloatUiContentComponent) {
+    set floatUi(newValue: string | NgxFloatUiContentComponent | TemplateRef<unknown>) {
         if (newValue === this._floatUi) {
 
             return;
@@ -97,13 +98,16 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
             if (typeof newValue === "string") {
                 this._content.text = newValue;
             }
+            else if (newValue instanceof TemplateRef) {
+                this._content.template = newValue;
+            }
             else {
                 this._content = newValue;
             }
         }
     }
 
-    get floatUi(): string | NgxFloatUiContentComponent {
+    get floatUi(): string | NgxFloatUiContentComponent | TemplateRef<unknown> {
         return this._floatUi;
     }
 
@@ -207,7 +211,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     protected _contentRef: ComponentRef<NgxFloatUiContentComponent>;
     protected _destroy$: Subject<void> = new Subject<void>();
     protected _disabled: boolean;
-    protected _floatUi: string | NgxFloatUiContentComponent;
+    protected _floatUi: string | NgxFloatUiContentComponent | TemplateRef<unknown>;
     protected _globalEventListenersCtrl$: Subject<void> = new Subject<void>();
     protected _hideOnClickOutside: boolean = !0;
     protected _placement: NgxFloatUiPlacements;
@@ -309,6 +313,11 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         if (typeof this.floatUi === "string") {
             this._content = this._constructContent();
             this._content.text = this.floatUi;
+        }
+        else if (this.floatUi instanceof TemplateRef) {
+            this._content = this._constructContent();
+            this._content.template = this.floatUi;
+            delete this._content.text;
         }
         else if (typeof this.floatUi === typeof void 0) {
             this._content = this._constructContent();

@@ -1,10 +1,11 @@
 import {
-    ChangeDetectorRef,
-    Directive,
-    ElementRef,
-    Inject,
-    Input,
-    ViewContainerRef
+  ChangeDetectorRef,
+  Directive,
+  ElementRef,
+  Inject,
+  Input,
+  TemplateRef,
+  ViewContainerRef
 } from "@angular/core";
 //
 import {NgxFloatUiOptions} from "../../models/ngx-float-ui-options.model";
@@ -22,7 +23,7 @@ import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
 export class NgxFloatUiLooseDirective extends NgxFloatUiDirective {
 
     @Input()
-    set floatUiLoose(newValue: string | NgxFloatUiContentComponent) {
+    set floatUiLoose(newValue: string | NgxFloatUiContentComponent | TemplateRef<unknown>) {
         this.floatUi = newValue;
     }
 

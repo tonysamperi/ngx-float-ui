@@ -17,6 +17,13 @@
 			<ng-content></ng-content>
 		</div>
 	}
+	@else if (template) {
+		<div
+				class="ngxp__inner"
+				[ngTemplateOutlet]="template">
+			<ng-content></ng-content>
+		</div>
+	}
 	@else {
 		<div
 				class="ngxp__inner">
