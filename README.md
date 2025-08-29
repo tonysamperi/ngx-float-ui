@@ -83,18 +83,11 @@ body {
 
 4. As `TemplateRef`:
   ```HTML  
-   <ng-template #popper2Content>
-       <p class="bold">Popper on bottom</p>
-   </ng-template>
-   <div [floatUi]="popper2Content"
-        [showOnStart]="true"
-        [showTrigger]="'click'"
-        hideOnClickOutside
-        [hideOnScroll]="true"
-        [placement]="'bottom'">
-       <p class="bold">Hey!</p>
-       <p class="thin">Choose where to put your popper!</p>
-   </div>
+        <ng-template #tooltip>
+            Tooltip content here
+        </ng-template>
+
+        <button [floatUi]="tooltip">Hover me</button>
   ```
 
 5. As text:
