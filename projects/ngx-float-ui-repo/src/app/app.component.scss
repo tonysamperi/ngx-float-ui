@@ -1,4 +1,4 @@
-@import "../scss/responsive";
+@use "../scss/responsive";
 
 .terminal {
   position: relative;
@@ -39,7 +39,7 @@
     color: #ff6b81;
   }
 
-  @include respond-below(sm) {
+  @include responsive.respond-below(sm) {
     width: 100%;
   }
 }

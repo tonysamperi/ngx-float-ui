@@ -1,7 +1,8 @@
-@import "scss/vars";
-@import "scss/code-highlight";
-@import "scss/popper-theme";
-@import "../../ngx-float-ui/src/lib/scss/theme";
+@use "scss/vars";
+@use "scss/code-highlight";
+@use "scss/popper-theme" as popupTheme;
+@use "../../ngx-float-ui/src/lib/scss/theme" as floatUiTheme;
+@use "sass:map";
 
 /* You can add global scss to this file, and also import other style files */
 @font-face {
@@ -13,10 +14,10 @@
 }
 
 body {
-  @include pop-scrollbar();
+  @include vars.pop-scrollbar();
   line-height: 1.6;
-  background: map-get($pop-colors, background);
-  color: map-get($pop-colors, accent);
+  background: map.get(vars.$pop-colors, background);
+  color: map.get(vars.$pop-colors, accent);
   font-family: -apple-system, Helvetica Neue, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, sans-serif;
   margin: 0;
   box-sizing: border-box;
@@ -69,7 +70,7 @@ body {
         left: 2px;
         margin-right: 6px;
         position: relative;
-        color: map-get($pop-colors, primary-light);
+        color: map.get(vars.$pop-colors, primary-light);
         height: 25px;
         margin-left: -30px;
       }
@@ -78,15 +79,14 @@ body {
 
   // COMMON ELEMENTS - END
 
-  @include pop-custom-theme();
+  @include popupTheme.pop-custom-theme();
 
   [pop-theming] {
-
-    @include ngx-float-ui-theme(#777, #fff1e0);
+    @include floatUiTheme.ngx-float-ui-theme(#777, #fff1e0);
   }
 
   .pop-title-light {
-    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     -webkit-letter-spacing: 0.5px;
     -moz-letter-spacing: 0.5px;
     -ms-letter-spacing: 0.5px;
@@ -97,7 +97,7 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
     line-height: 1.1;
-    color: map-get($pop-colors, accent);
+    color: map.get(vars.$pop-colors, accent);
   }
 
   .pop-button-white {
@@ -132,11 +132,11 @@ body {
   }
 
   .pop-lucky-font {
-    font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   }
 
   .pop-color-primary {
-    color: map-get($pop-colors, primary);
+    color: map.get(vars.$pop-colors, primary);
   }
 
   // TYPOGRAPHY - END
@@ -148,7 +148,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: map-get($pop-colors, background-grey);
+    background: map.get(vars.$pop-colors, background-grey);
     border-radius: 4px;
     color: #ffd3f8;
     font-family: Menlo, SFMono-Regular, Consolas, Liberation Mono, monospace;
@@ -199,5 +199,4 @@ body {
       user-select: none;
     }
   }
-
 }

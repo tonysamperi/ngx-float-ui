@@ -1,3 +1,3 @@
-@import "./theme";
+@use "./theme";
 
-@include ngx-float-ui-theme($dark-theme-bg, $dark-theme-txt);
+@include theme.ngx-float-ui-theme(theme.$dark-theme-bg, theme.$dark-theme-txt);
