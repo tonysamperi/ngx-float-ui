@@ -1,6 +1,8 @@
 import {Component, ViewEncapsulation} from "@angular/core";
 //
 import {NGX_FLOAT_UI_ENVIRONMENT} from "../environments/environment";
+import {NgxFloatUiDemoComponent} from "./components/demo/demo.component";
+import {NgxFloatUiTestComponent} from "./components/test/test.component";
 
 
 @Component({
@@ -8,7 +10,10 @@ import {NGX_FLOAT_UI_ENVIRONMENT} from "../environments/environment";
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+    imports: [
+        NgxFloatUiTestComponent,
+        NgxFloatUiDemoComponent
+    ]
 })
 export class NgxFloatUiAppComponent {
 

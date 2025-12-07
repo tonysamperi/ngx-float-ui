@@ -34,7 +34,7 @@ const codeTypes: NgxFloatUiArticleTypesRef<"css" | "markup"> = {
 export class NgxFloatUiDemoComponent implements OnInit {
 
     get buildRef(): string {
-        return `${pkg.version}-build-${pkg.build}`;
+        return `${pkg.version}`;
     }
 
     get codeMap(): NgxFloatUiArticleTypesRef<string> {
