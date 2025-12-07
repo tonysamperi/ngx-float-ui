@@ -30,7 +30,7 @@
         "ng": "ng",
         "start": "ng serve",
         "test": "ng test ngx-float-ui",
-        "test:ci": "ng test ngx-float-ui --browsers=ChromeHeadless --watch=false",
+        "test:ci": "ng test ngx-float-ui --browsers=ChromeHeadlessCustom --watch=false",
         "test:demo": "ng test ngx-float-ui-repo",
         "lint": "ng lint",
         "build": "ng build ngx-float-ui --configuration=production && gulp postBuild",
