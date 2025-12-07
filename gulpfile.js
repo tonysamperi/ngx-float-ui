@@ -59,22 +59,6 @@ gulp.task("bump:beta", () => {
     return doBump("prerelease", "beta");
 });
 
-task("build++", () => {
-    return gulp.src(join(__dirname, "package.json"))
-        .pipe(obj((file, enc, cb) => {
-            const pkgData = JSON.parse(file.contents.toString());
-            const prevBuild = pkgData.build;
-            pkgData.build++;
-            file.contents = Buffer.from(JSON.stringify(pkgData, null, 4));
-            log(
-                "Increased", log.colors.cyan(prevBuild),
-                "to", log.colors.magenta(pkgData.build)
-            );
-            cb(null, file);
-        }))
-        .pipe(dest(__dirname));
-});
-
 task("handleStyles", () => {
     logStart("handleStyles");
 

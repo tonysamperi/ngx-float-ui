@@ -1,3 +1,8 @@
+#20.1.0
+* Exposed provideNgxFloatUiOptions method
+* Improved README
+* Fix tests
+
 #20.0.0
 * Release for Angular 20! 🎉
 

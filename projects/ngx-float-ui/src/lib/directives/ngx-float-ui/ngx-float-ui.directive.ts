@@ -22,10 +22,11 @@ import {NgxFloatUiUtils} from "../../models/ngx-float-ui-utils.class";
 
 @Directive({
     selector: "[floatUi]",
-    exportAs: "floatUi",
-    standalone: true
+    exportAs: "floatUi"
 })
 export class NgxFloatUiDirective implements OnInit, OnDestroy {
+
+    static nextId: number = 0;
 
     static baseOptions: NgxFloatUiOptions = {
         showDelay: 0,
@@ -123,12 +124,11 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     }
 
     get placement(): NgxFloatUiPlacements {
-
         return this._placement;
     }
 
     @Input()
-    set preventOverflow(newValue: boolean) {
+    set preventOverflow(newValue: boolean | string) {
         this._preventOverflow = NgxFloatUiUtils.coerceBooleanProperty(newValue);
         this._checkExisting("preventOverflow", this._preventOverflow);
     }
@@ -210,6 +210,8 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     protected _floatUi: string | NgxFloatUiContentComponent;
     protected _globalEventListenersCtrl$: Subject<void> = new Subject<void>();
     protected _hideOnClickOutside: boolean = !0;
+    // @internal
+    protected _id: string = `ngx_float_ui_directive_${++NgxFloatUiDirective.nextId}`;
     protected _placement: NgxFloatUiPlacements;
     protected _preventOverflow: boolean;
     protected _scheduledHideTimeoutCtrl$: Subject<void> = new Subject<void>();
@@ -386,18 +388,20 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         if (this.timeoutAfterShow > 0) {
             this.scheduledHide(null, this.timeoutAfterShow);
         }
-        fromEvent(document, "click")
-            .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
-            .subscribe({
-                next: (e: MouseEvent) => this.hideOnClickOutsideHandler(e)
-            });
-        fromEvent(this._getScrollParent(this.getRefElement()), "scroll")
-            .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
-            .subscribe({
-                next: (e: MouseEvent) => {
-                    this.hideOnScrollHandler(e);
-                }
-            });
+            fromEvent(document, "click")
+                .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
+                .subscribe({
+                    next: (e: MouseEvent) => {
+                        return this.hideOnClickOutsideHandler(e);
+                    }
+                });
+            fromEvent(this._getScrollParent(this.getRefElement()), "scroll")
+                .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
+                .subscribe({
+                    next: (e: MouseEvent) => {
+                        this.hideOnScrollHandler(e);
+                    }
+                });
     }
 
     toggle() {
@@ -471,7 +475,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
             hideOnMouseLeave: this.hideOnMouseLeave,
             styles: this.styles,
             appendTo: this.appendTo,
-            preventOverflow: this.preventOverflow,
+            preventOverflow: this.preventOverflow
         });
         popperRef.onUpdate = this._onPopperUpdate.bind(this);
         popperRef.onHidden

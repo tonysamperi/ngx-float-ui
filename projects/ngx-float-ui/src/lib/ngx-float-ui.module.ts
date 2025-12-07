@@ -1,17 +1,12 @@
-import {ModuleWithProviders, NgModule, Provider} from "@angular/core";
+import {ModuleWithProviders, NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 //
 import {NgxFloatUiDirective} from "./directives/ngx-float-ui/ngx-float-ui.directive";
 import {NgxFloatUiLooseDirective} from "./directives/ngx-float-ui/ngx-float-ui-loose.directive";
 import {NgxFloatUiContentComponent} from "./components/ngx-float-ui-content/ngx-float-ui-content.component";
 import {NgxFloatUiOptions} from "./models/ngx-float-ui-options.model";
-import {NGX_FLOAT_UI_DEFAULTS} from "./models/ngx-float-ui-defaults.model";
+import {provideNgxFloatUiOptions} from "./providers/provide-ngx-float-ui-options.provider";
 
-export function provideNgxFloatUiOptions(config: NgxFloatUiOptions = {}): Provider[] {
-    return [
-        {provide: NGX_FLOAT_UI_DEFAULTS, useValue: config},
-    ];
-}
 
 @NgModule({
     imports: [

@@ -1,12 +1,24 @@
-import {enableProdMode} from "@angular/core";
-import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
-
-import {NgxFloatUiAppModule} from "./app/app.module";
+import {ApplicationConfig, enableProdMode} from "@angular/core";
+import {bootstrapApplication} from "@angular/platform-browser";
+import {NgxFloatUiPlacements, NgxFloatUiTriggers} from "ngx-float-ui";
+import {provideNgxFloatUiOptions} from "../../ngx-float-ui/src/lib/providers/provide-ngx-float-ui-options.provider";
+//
+import {NgxFloatUiAppComponent} from "./app/app.component";
 import {NGX_FLOAT_UI_ENVIRONMENT} from "./environments/environment";
 
 if (NGX_FLOAT_UI_ENVIRONMENT.production) {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(NgxFloatUiAppModule)
-    .catch(err => console.error(err));
+const appConfig: ApplicationConfig = {
+    providers: [
+        provideNgxFloatUiOptions({
+            trigger: NgxFloatUiTriggers.click,
+            hideOnClickOutside: false,
+            placement: NgxFloatUiPlacements.BOTTOM
+        })
+    ]
+};
+
+bootstrapApplication(NgxFloatUiAppComponent, appConfig)
+    .catch((err) => console.error(err));
