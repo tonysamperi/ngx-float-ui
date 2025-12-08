@@ -14,10 +14,6 @@
       "typeRoots": [
         "node_modules/@types"
       ],
-      "lib": [
-        "es2018",
-        "dom"
-      ],
       "paths": {
         "ngx-float-ui": [
           "./projects/ngx-float-ui/src/public-api"

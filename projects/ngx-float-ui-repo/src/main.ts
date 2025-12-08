@@ -1,4 +1,4 @@
-import {ApplicationConfig, enableProdMode} from "@angular/core";
+import {ApplicationConfig, enableProdMode, provideZoneChangeDetection} from "@angular/core";
 import {bootstrapApplication} from "@angular/platform-browser";
 import {NgxFloatUiPlacements, NgxFloatUiTriggers} from "ngx-float-ui";
 import {provideNgxFloatUiOptions} from "../../ngx-float-ui/src/lib/providers/provide-ngx-float-ui-options.provider";
@@ -20,5 +20,5 @@ const appConfig: ApplicationConfig = {
     ]
 };
 
-bootstrapApplication(NgxFloatUiAppComponent, appConfig)
+bootstrapApplication(NgxFloatUiAppComponent, {...appConfig, providers: [provideZoneChangeDetection(), ...appConfig.providers]})
     .catch((err) => console.error(err));
