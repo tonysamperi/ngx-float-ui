@@ -1,3 +1,6 @@
+#21.0.0
+* Release for Angular 21! 🎉
+
 #20.1.0
 * Exposed provideNgxFloatUiOptions method
 * Improved README

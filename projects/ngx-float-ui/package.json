@@ -1,6 +1,6 @@
 {
     "name": "ngx-float-ui",
-    "version": "20.1.0",
+    "version": "21.0.0",
     "license": "MIT",
     "description": "ngx-float-ui is an Angular wrapper for Floating UI",
     "homepage": "https://tonysamperi.github.io/ngx-float-ui",
@@ -16,7 +16,7 @@
         "email": "github@tonysamperi.it"
     },
     "keywords": [
-        "Angular 20+",
+        "Angular 21+",
         "ngx-float-ui",
         "floating-ui Angular",
         "Angular 19",
@@ -26,11 +26,11 @@
         "postinstall": "node ./tsbl.js"
     },
     "dependencies": {
-        "@floating-ui/dom": "^1.6.13"
+        "@floating-ui/dom": "^1.7.4"
     },
     "peerDependencies": {
-        "@angular/common": "^20.0.0",
-        "@angular/core": "^20.0.0",
+        "@angular/common": "^21.0.0",
+        "@angular/core": "^21.0.0",
         "rxjs": "^7.4.0"
     },
     "exports": {
