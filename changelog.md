@@ -1,3 +1,6 @@
+#21.0.1
+* Fix missing export of provideNgxFloatUiOptions
+
 #21.0.0
 * Release for Angular 21! 🎉
 
