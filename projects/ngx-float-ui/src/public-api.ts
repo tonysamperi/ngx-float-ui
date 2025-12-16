@@ -11,5 +11,7 @@ export * from "./lib/directives/ngx-float-ui/ngx-float-ui-loose.directive";
 export * from "./lib/models/ngx-float-ui-options.model";
 export * from "./lib/models/ngx-float-ui-placements.model";
 export * from "./lib/models/ngx-float-ui-triggers.model";
+// Providers
+export * from "./lib/providers/provide-ngx-float-ui-options.provider";
 // Module
 export * from "./lib/ngx-float-ui.module";
