@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ChangeDetectionStrategy} from "@angular/core";
 
 import {
     NgxFloatUiPlacements,
@@ -29,6 +29,7 @@ const codeTypes: NgxFloatUiArticleTypesRef<"css" | "markup"> = {
     selector: "app-demo",
     templateUrl: "demo.component.html",
     styleUrls: ["demo.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiLooseDirective]
 })
 export class NgxFloatUiDemoComponent implements OnInit {
@@ -43,14 +44,15 @@ export class NgxFloatUiDemoComponent implements OnInit {
 
     messages: { opts?: { delay?: number | "natural"; loop?: boolean; }; text: string; }[] = [];
     popperPlacements: typeof NgxFloatUiPlacements = NgxFloatUiPlacements;
-    // tslint:disable-next-line:no-bitwise
     positionButtons: NgxFloatUiPlacements[] = Object.values(NgxFloatUiPlacements).filter((v) => !~v.indexOf("auto"));
     selectedPosition: NgxFloatUiPlacements = this.positionButtons[0];
     year: number = new Date().getFullYear();
 
     ngOnInit(): void {
         Object.values(NgxFloatUiArticleTypes).forEach((s: NgxFloatUiArticleTypes) => this._updateCode(s));
-        Array.from(document.querySelectorAll(".pop-popcorn-wrap")).forEach((el: HTMLElement) => el.scrollTop = 300);
+        Array.from(document.querySelectorAll(".pop-popcorn-wrap")).forEach((el) => {
+            el.scrollTop = 300
+        });
         this._getMessages();
     }
 

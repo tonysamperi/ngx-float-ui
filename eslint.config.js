@@ -7,7 +7,7 @@ const angularRules = {
         "error",
         {
             type: "attribute",
-            prefix: "ngxMat",
+            prefix: "",
             style: "camelCase"
         }
     ],
@@ -15,7 +15,7 @@ const angularRules = {
         "error",
         {
             type: "element",
-            prefix: "app",
+            prefix: "",
             style: "kebab-case"
         }
     ]

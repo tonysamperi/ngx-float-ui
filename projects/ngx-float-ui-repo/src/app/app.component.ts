@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from "@angular/core";
+import {Component, ViewEncapsulation, ChangeDetectionStrategy} from "@angular/core";
 //
 import {NGX_FLOAT_UI_ENVIRONMENT} from "../environments/environment";
 import {NgxFloatUiDemoComponent} from "./components/demo/demo.component";
@@ -10,6 +10,7 @@ import {NgxFloatUiTestComponent} from "./components/test/test.component";
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         NgxFloatUiTestComponent,
         NgxFloatUiDemoComponent

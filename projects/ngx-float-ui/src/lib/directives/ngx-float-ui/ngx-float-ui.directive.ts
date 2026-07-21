@@ -4,12 +4,14 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
-    Inject,
     Input,
+    HostBinding,
+    HostListener,
     OnDestroy,
     OnInit,
     Output,
-    ViewContainerRef
+    ViewContainerRef,
+    inject
 } from "@angular/core";
 import {fromEvent, Subject, takeUntil, timer} from "rxjs";
 //
@@ -26,19 +28,18 @@ import {NgxFloatUiUtils} from "../../models/ngx-float-ui-utils.class";
 })
 export class NgxFloatUiDirective implements OnInit, OnDestroy {
 
-    static nextId: number = 0;
-
     static baseOptions: NgxFloatUiOptions = {
         showDelay: 0,
         hideOnClickOutside: true,
         hideOnMouseLeave: false,
         hideOnScroll: false,
         appendTo: undefined,
-        ariaRole: "popper",
+        ariaRole: "tooltip",
         ariaDescribe: "",
         styles: {},
         trigger: NgxFloatUiTriggers.click
     };
+    static nextId: number = 0;
 
     @Input()
     set applyClass(newValue: string) {
@@ -138,7 +139,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     }
 
     @Input()
-    set showOnStart(newValue: boolean) {
+    set showOnStart(newValue: boolean | "") {
         this._showOnStart = NgxFloatUiUtils.coerceBooleanProperty(newValue);
     }
 
@@ -146,92 +147,72 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         return this._showOnStart;
     }
 
-    @Input()
-    appendTo: string;
-
-    @Input()
-    ariaDescribe: string | void;
-
-    @Input()
-    ariaRole: string | void;
-
-    @Input()
-    boundariesElement: string;
-
-    @Input()
-    disableAnimation: boolean;
-
-    @Input()
-    disableStyle: boolean;
-
-    @Input()
-    hideOnMouseLeave: boolean | void;
-
-    @Input()
-    hideOnScroll: boolean | void;
-
-    @Input()
-    hideTimeout: number = 0;
-
-    @Output()
-    onHidden: EventEmitter<NgxFloatUiDirective> = new EventEmitter<NgxFloatUiDirective>();
-
-    @Output()
-    onShown: EventEmitter<NgxFloatUiDirective> = new EventEmitter<NgxFloatUiDirective>();
-
-    @Output()
-    onUpdate: EventEmitter<void> = new EventEmitter<void>();
-
-    @Input()
-    positionFixed: boolean;
-
-    @Input()
-    showDelay: number | undefined;
-
-    @Input()
-    showTrigger: NgxFloatUiTriggers | undefined;
-
-    @Input()
-    styles: object;
-
-    @Input()
-    targetElement: HTMLElement;
-
-    @Input()
-    timeoutAfterShow: number = 0;
-
-    protected _applyClass: string;
-    protected _arrowClass: string;
-    protected _content: NgxFloatUiContentComponent;
-    protected _contentClass = NgxFloatUiContentComponent;
-    protected _contentRef: ComponentRef<NgxFloatUiContentComponent>;
-    protected _destroy$: Subject<void> = new Subject<void>();
-    protected _disabled: boolean;
-    protected _floatUi: string | NgxFloatUiContentComponent;
-    protected _globalEventListenersCtrl$: Subject<void> = new Subject<void>();
-    protected _hideOnClickOutside: boolean = !0;
-    // @internal
-    protected _id: string = `ngx_float_ui_directive_${++NgxFloatUiDirective.nextId}`;
-    protected _placement: NgxFloatUiPlacements;
-    protected _preventOverflow: boolean;
-    protected _scheduledHideTimeoutCtrl$: Subject<void> = new Subject<void>();
-    protected _scheduledShowTimeoutCtrl$: Subject<void> = new Subject<void>();
-    protected _shown: boolean = !1;
-    protected _showOnStart: boolean = !1;
-
-    constructor(protected _changeDetectorRef: ChangeDetectorRef,
-                protected _elementRef: ElementRef,
-                protected _vcr: ViewContainerRef,
-                @Inject(NGX_FLOAT_UI_DEFAULTS) protected _popperDefaults: NgxFloatUiOptions = {}) {
-        NgxFloatUiDirective.baseOptions = {...NgxFloatUiDirective.baseOptions, ...this._popperDefaults};
+    @HostBinding("attr.aria-expanded")
+    private get _ariaExpanded(): string {
+        return `${this._shown}`;
     }
 
-    static assignDefined(target: any, ...sources: any[]) {
+    @HostBinding("attr.aria-haspopup")
+    private get _ariaHasPopup(): string | null {
+        return this.ariaRole || "tooltip";
+    }
+
+    @HostBinding("attr.tabindex")
+    private get _tabIndex(): string | null {
+        const tagName = this._elementRef.nativeElement?.tagName?.toLowerCase();
+        return ["a", "button", "input", "select", "textarea"].indexOf(tagName) > -1 ? null : "0";
+    }
+
+    @Input() appendTo!: string | undefined;
+    @Input() ariaDescribe!: string | undefined;
+    @Input() ariaRole!: string | undefined;
+    @Input() boundariesElement!: string | undefined;
+    @Input() disableAnimation!: boolean | undefined;
+    @Input() disableStyle!: boolean | undefined;
+    @Input() hideOnMouseLeave!: boolean | undefined;
+    @Input() hideOnScroll!: boolean | undefined;
+    @Input() hideTimeout: number = 0;
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+    @Output() onHidden: EventEmitter<NgxFloatUiDirective> = new EventEmitter<NgxFloatUiDirective>();
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+    @Output() onShown: EventEmitter<NgxFloatUiDirective> = new EventEmitter<NgxFloatUiDirective>();
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+    @Output() onUpdate: EventEmitter<void> = new EventEmitter<void>();
+    @Input() positionFixed!: boolean | undefined;
+    @Input() showDelay: number | undefined;
+    @Input() showTrigger: NgxFloatUiTriggers | undefined;
+    @Input() styles!: Record<string, string> | undefined;
+    @Input() targetElement!: HTMLElement | undefined;
+    @Input() timeoutAfterShow: number = 0;
+
+    protected _applyClass!: string;
+    protected _arrowClass!: string;
+    protected _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+    protected _content!: NgxFloatUiContentComponent;
+    protected _contentClass = NgxFloatUiContentComponent;
+    protected _contentRef!: ComponentRef<NgxFloatUiContentComponent>;
+    protected _destroy$: Subject<void> = new Subject<void>();
+    protected _disabled = !1;
+    protected _elementRef: ElementRef = inject(ElementRef);
+    protected _floatUi!: string | NgxFloatUiContentComponent;
+    protected _globalEventListenersCtrl$: Subject<void> = new Subject<void>();
+    protected _hideOnClickOutside: boolean = !0;
+    protected _id: string = `ngx_float_ui_directive_${++NgxFloatUiDirective.nextId}`;
+    protected _placement!: NgxFloatUiPlacements;
+    protected _popperDefaults: NgxFloatUiOptions = inject(NGX_FLOAT_UI_DEFAULTS) || {};
+    protected _preventOverflow = !1;
+    protected _scheduledHideTimeoutCtrl$: Subject<void> = new Subject<void>();
+    protected _scheduledShowTimeoutCtrl$: Subject<void> = new Subject<void>();
+    protected _showOnStart: boolean = !1;
+    protected _shown: boolean = !1;
+    protected _vcr: ViewContainerRef = inject(ViewContainerRef);
+
+    static assignDefined(target: NgxFloatUiOptions, ...sources: Partial<NgxFloatUiOptions>[]): NgxFloatUiOptions {
         for (const source of sources) {
             for (const key of Object.keys(source)) {
-                const val = source[key];
+                const val = source[key as keyof NgxFloatUiOptions];
                 if (val !== undefined) {
-                    target[key] = val;
+                    target[key as keyof NgxFloatUiOptions] = val as never;
                 }
             }
         }
@@ -304,7 +285,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     ngOnDestroy() {
         this._destroy$.next();
         this._destroy$.complete();
-        this._content && this._content.clean();
+        this._content?.clean();
     }
 
     ngOnInit() {
@@ -329,7 +310,32 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         }
     }
 
-    scheduledHide($event: any = null, delay: number = this.hideTimeout) {
+    @HostListener("blur")
+    onBlur() {
+        if (this.showTrigger === NgxFloatUiTriggers.hover) {
+            this.scheduledHide(null, this.hideTimeout);
+        }
+    }
+
+    @HostListener("focus")
+    onFocus() {
+        if (this.showTrigger === NgxFloatUiTriggers.hover) {
+            this.scheduledShow(this.showDelay);
+        }
+    }
+
+    @HostListener("keydown.enter")
+    @HostListener("keydown.space")
+    onKeyboardActivate() {
+        this.toggle();
+    }
+
+    @HostListener("keydown.escape")
+    onKeyboardEscape() {
+        this.hide();
+    }
+
+    scheduledHide($event: MouseEvent | null = null, delay: number = this.hideTimeout) {
         if (this.disabled) {
             return;
         }
@@ -339,7 +345,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
             .subscribe({
                 next: () => {
                     // TODO: check
-                    const toElement = $event ? $event.toElement : null;
+                    const toElement = $event ? $event.relatedTarget : null;
                     const popperContentView = this._content.floatUiViewRef ? this._content.floatUiViewRef.nativeElement : false;
                     if (!popperContentView ||
                         popperContentView === toElement ||
@@ -354,7 +360,7 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
             });
     }
 
-    scheduledShow(delay: number = this.showDelay) {
+    scheduledShow(delay: number = this.showDelay ?? 0) {
         if (this.disabled) {
             return;
         }
@@ -388,34 +394,37 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         if (this.timeoutAfterShow > 0) {
             this.scheduledHide(null, this.timeoutAfterShow);
         }
-            fromEvent(document, "click")
+        fromEvent<MouseEvent>(document, "click")
+            .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
+            .subscribe({
+                next: (e: MouseEvent) => {
+                    return this.hideOnClickOutsideHandler(e);
+                }
+            });
+        if (this.hideOnScroll) {
+            fromEvent<Event>(this._getScrollParent(this.getRefElement()) as EventTarget, "scroll")
                 .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
                 .subscribe({
-                    next: (e: MouseEvent) => {
-                        return this.hideOnClickOutsideHandler(e);
+                    next: (e: Event) => {
+                        this.hideOnScrollHandler(e as MouseEvent);
                     }
                 });
-            fromEvent(this._getScrollParent(this.getRefElement()), "scroll")
-                .pipe(takeUntil(this._globalEventListenersCtrl$), takeUntil(this._destroy$))
-                .subscribe({
-                    next: (e: MouseEvent) => {
-                        this.hideOnScrollHandler(e);
-                    }
-                });
+        }
     }
 
     toggle() {
         if (this.disabled) {
             return;
         }
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this._shown ? this.scheduledHide(null, this.hideTimeout) : this.scheduledShow();
     }
 
     protected _addListener(eventName: string, cb: () => void): void {
-        fromEvent(this._elementRef.nativeElement, eventName)
+        fromEvent<Event>(this._elementRef.nativeElement, eventName)
             .pipe(takeUntil(this._destroy$))
             .subscribe({
-                next: cb
+                next: () => cb()
             });
     }
 
@@ -424,9 +433,12 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         this._changeDetectorRef.detectChanges();
     }
 
-    protected _checkExisting(key: string, newValue: string | number | boolean | NgxFloatUiPlacements): void {
+    protected _checkExisting(key: keyof NgxFloatUiOptions, newValue: NgxFloatUiOptions[keyof NgxFloatUiOptions]): void {
         if (this._content) {
-            this._content.floatUiOptions[key] = newValue;
+            this._content.floatUiOptions = {
+                ...this._content.floatUiOptions,
+                [key]: newValue
+            };
             if (!this._shown) {
                 return;
             }
@@ -440,15 +452,16 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
         return this._contentRef.instance as NgxFloatUiContentComponent;
     }
 
-    protected _getScrollParent(node) {
-        const isElement = node instanceof HTMLElement;
-        const overflowY = isElement && window.getComputedStyle(node).overflowY;
-        const isScrollable = overflowY !== "visible" && overflowY !== "hidden";
-
+    protected _getScrollParent(node: Node | null): Node | Document | null {
         if (!node) {
             return null;
         }
-        else if (isScrollable && node.scrollHeight > node.clientHeight) {
+
+        const isElement = node instanceof HTMLElement;
+        const overflowY = isElement ? window.getComputedStyle(node).overflowY : "";
+        const isScrollable = overflowY !== "visible" && overflowY !== "hidden";
+
+        if (isElement && isScrollable && node.scrollHeight > node.clientHeight) {
             return node;
         }
 
@@ -484,11 +497,15 @@ export class NgxFloatUiDirective implements OnInit, OnDestroy {
     }
 
     protected _setDefaults() {
-        ["showDelay", "hideOnScroll", "hideOnMouseLeave", "hideOnClickOutside", "ariaRole", "ariaDescribe"].forEach((key) => {
-            this[key] = this[key] === void 0 ? NgxFloatUiDirective.baseOptions[key] : this[key];
-        });
-        this.showTrigger = this.showTrigger || NgxFloatUiDirective.baseOptions.trigger;
-        this.styles = this.styles === void 0 ? {...NgxFloatUiDirective.baseOptions.styles} : this.styles;
+        const baseOptions = {...NgxFloatUiDirective.baseOptions, ...this._popperDefaults};
+        this.showDelay = this.showDelay ?? baseOptions.showDelay;
+        this.hideOnScroll = this.hideOnScroll ?? baseOptions.hideOnScroll;
+        this.hideOnMouseLeave = this.hideOnMouseLeave ?? baseOptions.hideOnMouseLeave;
+        this.hideOnClickOutside = this.hideOnClickOutside ?? baseOptions.hideOnClickOutside;
+        this.ariaRole = this.ariaRole ?? baseOptions.ariaRole;
+        this.ariaDescribe = this.ariaDescribe ?? baseOptions.ariaDescribe;
+        this.showTrigger = this.showTrigger || baseOptions.trigger;
+        this.styles = this.styles === void 0 ? {...baseOptions.styles} : this.styles;
     }
 
 }

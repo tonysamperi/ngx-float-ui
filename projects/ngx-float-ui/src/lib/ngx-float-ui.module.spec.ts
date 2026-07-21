@@ -1,6 +1,7 @@
+import {minVersion} from "semver";
+//
 import mainPkg from "../../../../package.json";
 import libPkg from "../../package.json";
-import {minVersion} from "semver";
 
 it("should have matching package versions for @floating-ui/dom", () => {
     const floatUiVersionMain = mainPkg.dependencies["@floating-ui/dom"];
@@ -16,7 +17,9 @@ it("should have matching package versions for @angular", () => {
     const angularMajorMain = minVersion(angularVersionMain);
     const angularMajorLib = minVersion(angularVersionLib);
 
-    expect(angularMajorLib.major).toEqual(angularMajorMain.major);
+    expect(angularMajorLib?.major).not.toBeNull();
+    expect(angularMajorMain?.major).not.toBeNull();
+    expect(angularMajorLib!.major).toEqual(angularMajorMain!.major);
 });
 
 
