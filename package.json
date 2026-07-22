@@ -38,6 +38,7 @@
     "pack": "gulp pack",
     "release": "npm publish ./dist/ngx-float-ui",
     "release:beta": "npm publish ./dist/ngx-float-ui --tag beta",
+    "release:next": "npm publish ./dist/ngx-float-ui --tag next",
     "bump:patch": "gulp bump:patch",
     "bump:minor": "gulp bump:minor",
     "bump:major": "gulp bump:major"
