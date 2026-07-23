@@ -21,8 +21,7 @@
     },
     "enableResourceInlining": true,
     "enableIvy": true,
-    "compilationMode": "partial",
-    "strictTemplates": true
+    "compilationMode": "partial"
   },
   "exclude": [
     "**/*.spec.ts"
