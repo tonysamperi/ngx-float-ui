@@ -2,10 +2,9 @@ import {NgxFloatUiArticleTypesRef} from "./ngx-float-ui-article-types.model";
 import {NgxFloatUiPlacements} from "ngx-float-ui";
 
 const positionEntries = Object.entries(NgxFloatUiPlacements);
-// tslint:disable-next-line:naming-convention
 export const getNgxFloatUiCodeMap = (positionValue: NgxFloatUiPlacements): NgxFloatUiArticleTypesRef => {
     const position = positionValue
-        ? positionEntries.find(([, v]) => v === positionValue)[0]
+        ? positionEntries.find(([, v]) => v === positionValue)![0]
         : "";
 
     return {

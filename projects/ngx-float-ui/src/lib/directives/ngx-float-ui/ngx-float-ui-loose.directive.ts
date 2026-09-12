@@ -1,8 +1,7 @@
 import {
     ChangeDetectorRef,
     Directive,
-    ElementRef,
-    Inject,
+    ElementRef, inject,
     Input,
     ViewContainerRef
 } from "@angular/core";
@@ -16,8 +15,7 @@ import {NgxFloatUiTriggers} from "../../models/ngx-float-ui-triggers.model";
 
 @Directive({
     selector: "[floatUiLoose]",
-    exportAs: "floatUiLoose",
-    standalone: true
+    exportAs: "floatUiLoose"
 })
 export class NgxFloatUiLooseDirective extends NgxFloatUiDirective {
 
@@ -36,11 +34,9 @@ export class NgxFloatUiLooseDirective extends NgxFloatUiDirective {
         this.showTrigger = newValue as NgxFloatUiTriggers;
     }
 
-    constructor(changeDetectorRef: ChangeDetectorRef,
-                elementRef: ElementRef,
-                vcr: ViewContainerRef,
-                @Inject(NGX_FLOAT_UI_DEFAULTS) popperDefaults: NgxFloatUiOptions = {}) {
-        super(changeDetectorRef, elementRef, vcr, popperDefaults);
-    }
+    changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+    elementRef: ElementRef = inject(ElementRef);
+    popperDefaults: NgxFloatUiOptions = inject(NGX_FLOAT_UI_DEFAULTS) || {};
+    vcr: ViewContainerRef = inject(ViewContainerRef);
 
 }

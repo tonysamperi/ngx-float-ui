@@ -7,9 +7,9 @@
 	 [style.opacity]="opacity"
 	 [ngStyle]="floatUiOptions.styles"
 	 [ngClass]="extractAppliedClassListExpr(floatUiOptions.applyClass)"
-	 attr.aria-hidden="{{ariaHidden}}"
+	 [attr.aria-hidden]="ariaHidden"
 	 [attr.aria-describedby]="floatUiOptions.ariaDescribe || null"
-	 attr.role="{{floatUiOptions.ariaRole}}">
+	 [attr.role]="floatUiOptions.ariaRole || null">
 	@if (text) {
 		<div
 				class="ngxp__inner"

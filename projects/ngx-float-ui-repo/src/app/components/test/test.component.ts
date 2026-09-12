@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ChangeDetectionStrategy} from "@angular/core";
 //
 import {NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiPlacements} from "ngx-float-ui";
 
@@ -6,6 +6,7 @@ import {NgxFloatUiContentComponent, NgxFloatUiDirective, NgxFloatUiPlacements} f
     selector: "app-test",
     templateUrl: "test.component.html",
     styleUrls: ["test.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgxFloatUiContentComponent, NgxFloatUiDirective]
 })
 export class NgxFloatUiTestComponent {

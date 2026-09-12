@@ -1,3 +1,6 @@
+#22.0.0
+* Release for Angular 22! 🎉
+
 #21.0.1
 * Fix missing export of provideNgxFloatUiOptions
 
