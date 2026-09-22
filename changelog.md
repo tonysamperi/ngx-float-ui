@@ -1,3 +1,6 @@
+#22.0.1
+* Remove useless postinstall script
+
 #22.0.0
 * Release for Angular 22! 🎉
 

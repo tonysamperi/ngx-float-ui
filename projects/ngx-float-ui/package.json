@@ -1,6 +1,6 @@
 {
     "name": "ngx-float-ui",
-    "version": "22.0.0",
+    "version": "22.0.1",
     "license": "MIT",
     "description": "ngx-float-ui is an Angular wrapper for Floating UI",
     "homepage": "https://tonysamperi.github.io/ngx-float-ui",
@@ -22,9 +22,6 @@
         "popperjs",
         "popper"
     ],
-    "scripts": {
-        "postinstall": "node ./tsbl.js"
-    },
     "dependencies": {
         "@floating-ui/dom": "^1.8.0"
     },
